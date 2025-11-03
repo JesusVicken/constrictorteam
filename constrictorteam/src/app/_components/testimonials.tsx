@@ -72,7 +72,7 @@ export default function LineageSection() {
         return () => emblaApi.off('select', onSelect)
     }, [emblaApi])
 
-    // GSAP + AOS
+    // GSAP + AOS - CORRIGIDO: função de cleanup sem retorno explícito
     useEffect(() => {
         AOS.init({
             duration: 800,
@@ -114,6 +114,11 @@ export default function LineageSection() {
                     }
                 )
             }
+        }
+
+        // Cleanup function sem retorno explícito
+        return () => {
+            // Limpeza se necessário
         }
     }, [isMobile])
 
