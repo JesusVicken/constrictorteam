@@ -91,7 +91,7 @@ export default function Contact() {
                     {/* Redes Sociais */}
                     <div data-aos="fade-up" data-aos-delay="200">
                         <h3 className="text-2xl font-semibold mb-4 text-white">
-                            Redes Sociais
+                           Acompanhe nossas Redes Sociais
                         </h3>
                         <p className="mb-4 text-gray-300">
                             Siga a <strong>Constrictor Team</strong> e acompanhe

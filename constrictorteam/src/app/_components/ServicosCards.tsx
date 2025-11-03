@@ -6,9 +6,14 @@ import { motion } from 'framer-motion'
 export default function Modalidades() {
     const modalidades = [
         {
-            nome: 'Jiu-Jitsu',
+            nome: 'Brazilian Jiu-Jitsu',
             descricao: 'Arte suave que ensina técnica, disciplina e autoconfiança, ideal para todas as idades.',
             imagem: '/jiu.jpg',
+        },
+        {
+            nome: 'No-Gi',
+            descricao: 'Modalidade de combate que foca em técnicas de chão e finalizações, desenvolvendo força e estratégia.',
+            imagem: '/nogi.jpg',
         },
         {
             nome: 'MMA',
@@ -16,10 +21,16 @@ export default function Modalidades() {
             imagem: '/mma.jpg',
         },
         {
+            nome: 'Jiu-Jitsu Kids',
+            descricao: 'Treinamento voltado para crianças, promovendo disciplina, coordenação e socialização desde cedo.',
+            imagem: '/kids.png',
+        },
+        {
             nome: 'Capoeira',
             descricao: 'Expressão cultural e luta acrobática que une música, ritmo e movimento.',
             imagem: '/capoeira.png',
         },
+
     ]
 
     return (
@@ -58,7 +69,7 @@ export default function Modalidades() {
                                 fill
                                 className="object-cover"
                                 sizes="(max-width: 768px) 100vw, 33vw"
-                                priority
+                                priority={i < 3}
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
                         </div>

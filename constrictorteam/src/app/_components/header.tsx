@@ -40,7 +40,7 @@ export default function Header() {
                     </Link>
                     <Link href="/projetos">
                         <Button variant="ghost" className="text-base">
-                            Horário
+                            Horários
                         </Button>
                     </Link>
                     <Link href="/modalidade">

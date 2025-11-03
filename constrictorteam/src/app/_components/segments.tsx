@@ -1,8 +1,11 @@
+
+
+
 'use client'
 
 import useEmblaCarousel from 'embla-carousel-react'
 import Autoplay from 'embla-carousel-autoplay'
-import Image from 'next/image'
+import Image from 'next/image' // <- Importação já existente
 import { useCallback } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
@@ -86,16 +89,31 @@ export default function Segments() {
     const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi])
 
     return (
-        <section className="py-20 bg-black text-white relative overflow-hidden">
-            <div className="container mx-auto px-4">
+        // 👇 1. Removido 'bg-black' daqui
+        <section className="py-20 text-white relative overflow-hidden">
+            {/* 👇 2. Adicionada a imagem de fundo com next/image */}
+            <Image
+                src="/cobra.jpg"
+                alt="Plano de fundo da Constrictor Team"
+                fill
+                className="object-cover z-0" // object-cover garante que a imagem cubra o espaço
+                quality={75} // Ajuste a qualidade conforme necessário
+            />
+
+            {/* 👇 3. Adicionado um overlay escuro para legibilidade */}
+            <div className="absolute inset-0 bg-black/70 z-10" />
+
+            {/* 👇 4. Adicionado 'relative z-20' para o conteúdo ficar na frente */}
+            <div className="container mx-auto px-4 relative z-20">
                 {/* Cabeçalho */}
                 <div className="text-center mb-12" data-aos="fade-up">
                     <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-white">
                         Unidades Constrictor Team
                     </h2>
-                    <p className="text-gray-400 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
-                        Presentes no Brasil e no mundo, nossas unidades seguem a mesma filosofia:
-                        técnica, respeito e evolução constante.
+                    <p className="text-gray-300 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
+                        {/* Aumentei levemente a cor da fonte para melhorar o contraste sobre o overlay */}
+                        Presentes no Brasil e no mundo, nossas unidades seguem a
+                        mesma filosofia: técnica, respeito e evolução constante.
                     </p>
                 </div>
 
@@ -125,11 +143,16 @@ export default function Segments() {
                                 <Card
                                     key={index}
                                     className={`scroll-ml-6 scroll-snap-start min-w-[92%] sm:min-w-[340px] max-w-sm 
-                                        rounded-2xl overflow-hidden shadow-lg hover:scale-[1.03] transition-transform duration-300
-                                        border ${unidade.title.includes('Sede')
-                                            ? 'border-gray-500 bg-zinc-800/90'
-                                            : 'border-zinc-700 bg-zinc-900'
-                                        }`}
+                                    rounded-2xl overflow-hidden shadow-lg hover:scale-[1.03] transition-transform duration-300
+                                    border ${unidade.title.includes('Sede')
+                                            ? 'border-gray-500 bg-zinc-800/90' // 90% de opacidade
+                                            : 'border-zinc-700 bg-zinc-900/95' // 95% de opacidade
+                                        }
+                                    ${unidade.title.includes('Sede')
+                                            ? 'order-first sm:order-none'
+                                            : ''
+                                        }
+                                `}
                                     data-aos="fade-up"
                                     data-aos-delay={index * 100}
                                 >
@@ -154,9 +177,11 @@ export default function Segments() {
                                     {/* Professores */}
                                     <CardContent className="px-5 pb-6">
                                         <div className="text-gray-300 text-sm sm:text-base text-center italic tracking-wide font-medium space-y-1">
-                                            {unidade.professors.map((prof, i) => (
-                                                <p key={i}>{prof}</p>
-                                            ))}
+                                            {unidade.professors.map(
+                                                (prof, i) => (
+                                                    <p key={i}>{prof}</p>
+                                                )
+                                            )}
                                         </div>
                                     </CardContent>
                                 </Card>

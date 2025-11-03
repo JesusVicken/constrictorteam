@@ -32,7 +32,7 @@ export default function Hero() {
                 gsap.set(imageElement, { scale: 1.2, x: '10%', y: '0%' });
                 gsap.to(imageElement, {
                     x: '-10%',
-                    duration: 10,
+                    duration: 3,
                     ease: "sine.inOut",
                     repeat: -1,
                     yoyo: true,
