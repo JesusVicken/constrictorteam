@@ -63,14 +63,22 @@ export default function LineageSection() {
     const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi])
     const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi])
 
-    // Atualiza índice selecionado
     useEffect(() => {
-        if (!emblaApi) return
+        if (!emblaApi) {
+            return
+        }
+
         const onSelect = () => setSelectedIndex(emblaApi.selectedScrollSnap())
         emblaApi.on('select', onSelect)
         onSelect()
-        return () => emblaApi.off('select', onSelect)
+
+        const cleanup = () => {
+            emblaApi.off('select', onSelect)
+        }
+
+        return cleanup
     }, [emblaApi])
+
 
     // GSAP + AOS - CORRIGIDO: função de cleanup sem retorno explícito
     useEffect(() => {
