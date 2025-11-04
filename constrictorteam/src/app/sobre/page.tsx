@@ -119,7 +119,7 @@ export default function SobrePage() {
             <section className="relative w-full min-h-screen flex items-center justify-center py-20 lg:py-0 overflow-hidden">
                 <video
                     className="absolute top-0 left-0 w-full h-full object-cover"
-                    src="/bgcobra.mp4"
+                    src="/bgcobra2.mp4"
                     autoPlay
                     loop
                     muted

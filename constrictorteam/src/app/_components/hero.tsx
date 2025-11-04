@@ -1,15 +1,11 @@
 'use client'
 
+import { useEffect } from 'react'
 import Image from 'next/image'
-import React, { useEffect, useRef } from 'react'
-import { WhatsappLogoIcon } from "@phosphor-icons/react/dist/ssr"
 import AOS from 'aos'
 import 'aos/dist/aos.css'
-import gsap from 'gsap'
 
 export default function Hero() {
-    const mobileImageRef = useRef(null);
-
     useEffect(() => {
         AOS.init({
             duration: 800,
@@ -18,105 +14,143 @@ export default function Hero() {
         })
     }, [])
 
-    useEffect(() => {
-        const imageElement = mobileImageRef.current;
-        if (!imageElement) return;
-
-        const mediaQuery = window.matchMedia('(min-width: 768px)');
-
-        const setupAnimation = () => {
-            if (mediaQuery.matches) {
-                gsap.killTweensOf(imageElement);
-                gsap.set(imageElement, { x: '0%', scale: 1 });
-            } else {
-                gsap.set(imageElement, { scale: 1.2, x: '10%', y: '0%' });
-                gsap.to(imageElement, {
-                    x: '-10%',
-                    duration: 3,
-                    ease: "sine.inOut",
-                    repeat: -1,
-                    yoyo: true,
-                });
-            }
-        };
-
-        setupAnimation();
-        mediaQuery.addListener(setupAnimation);
-
-        return () => {
-            mediaQuery.removeListener(setupAnimation);
-            gsap.killTweensOf(imageElement);
-        };
-    }, []);
-
     return (
-        // Mantive a altura de 80vh para mobile, para o conteúdo ter espaço
-        <section className="relative w-full h-[80vh] sm:h-[80vh] md:h-[90vh] lg:h-[95vh] overflow-hidden">
-
-            {/* --- IMAGEM PARA MOBILE (COM ANIMAÇÃO GSAP) --- */}
-            <div className="absolute inset-0 w-full h-full md:hidden">
-                <Image
-                    ref={mobileImageRef}
-                    src="/backg.png"
-                    alt="Equipe Constrictor"
-                    fill
-                    sizes="100vw"
-                    className="object-cover object-center"
-                    priority
-                    quality={100} // Qualidade máxima
+        <main className="w-full text-white overflow-hidden bg-black">
+            {/* --- PARALLAX 1: VÍDEO DE FUNDO --- */}
+            <section className="relative h-screen flex items-center justify-center text-center overflow-hidden">
+                <video
+                    className="absolute top-0 left-0 w-full h-full object-cover"
+                    src="/bgcobra.mp4"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
                 />
-            </div>
+                <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/90"></div>
 
-            {/* --- IMAGEM PARA DESKTOP (COM HOVER E AOS) --- */}
-            <div className="absolute inset-0 w-full h-full hidden md:block">
-                <Image
-                    src="/constrictor.webp"
-                    alt="Equipe Constrictor"
-                    fill
-                    sizes="100vw"
-                    className="object-cover object-[center_30%] md:object-center transition-transform duration-700 ease-out hover:scale-105"
-                    priority
-                    quality={100} // Qualidade máxima
-                    data-aos="zoom-out"
-                />
-            </div>
+                <div className="relative z-10 flex flex-col items-center space-y-6 px-4">
+                    <div data-aos="fade-down">
+                        <Image
+                            src="/logo.png"
+                            alt="Constrictor Team"
+                            width={400}
+                            height={130}
+                            priority
+                            className="drop-shadow-[0_0_25px_rgba(255,255,255,0.4)] brightness-110"
+                        />
+                        <div className="w-24 h-[2px] bg-white mx-auto mt-4 opacity-60"></div>
+                    </div>
+                </div>
+            </section>
 
-            {/* Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-
-            {/* --- CONTEÚDO (AJUSTADO PARA DESKTOP E MOBILE) --- */}
-            <div
-                className="relative z-10 container mx-auto h-full flex flex-col justify-end px-6 sm:px-8 md:px-10 lg:px-12 
-                           pb-8 md:pb-24" // <-- MUDANÇA 1: Alinha ao final (justify-end) e dá mais padding no desktop (md:pb-24)
+            {/* --- PARALLAX 2: IMAGEM FIXA --- */}
+            <section
+                className="relative h-[85vh] flex items-center justify-center bg-fixed bg-cover bg-center"
+                style={{
+                    backgroundImage: 'url(/ataide.jpg)',
+                }}
             >
+                <div className="absolute inset-0 bg-black/60"></div>
                 <div
-                    className="max-w-2xl text-white space-y-5 
-                               flex flex-col items-center md:items-start" // <-- MUDANÇA 2: Centraliza no mobile, alinha à esquerda no desktop
+                    className="relative z-10 text-center max-w-2xl px-6"
                     data-aos="fade-up"
                 >
-                    <p
-                        className="text-base sm:text-lg md:text-xl opacity-95 max-w-md sm:max-w-lg leading-relaxed 
-                                   text-center md:text-left" // <-- MUDANÇA 2 (cont.): Centraliza o texto no mobile
-                        data-aos="fade-right"
-                        data-aos-delay="500"
-                    >
-                        Venha fazer parte da equipe mais conceituada de Brasília.
+                    <h2 className="text-3xl sm:text-4xl font-bold mb-4 tracking-wide uppercase">
+                        Um Legado de Excelência
+                    </h2>
+                    <p className="text-lg opacity-90 leading-relaxed text-gray-200">
+                        Liderada pela família Ludgero, a Constrictor Team carrega a tradição
+                        do Grão-Mestre Armando Wriedt, um dos primeiros faixas-pretas de Hélio
+                        Gracie. Mais de quatro décadas moldando campeões no Jiu-Jitsu, MMA e
+                        artes marciais.
                     </p>
-
-                    <a
-                        href="https://wa.me/556191627171?text=Olá, vim pelo site e gostaria de solicitar uma aula experimental."
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-3 px-6 py-3 sm:px-8 sm:py-4 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-full shadow-lg transition-all duration-300 hover:scale-105 focus:ring-4 focus:ring-green-500/50"
-                        data-aos="fade-up"
-                        data-aos-delay="700"
-                    // O botão já será centralizado por causa do 'items-center' no 'div' pai
-                    >
-                        <WhatsappLogoIcon className="w-6 h-6 sm:w-7 sm:h-7" weight="fill" />
-                        <span>Agendar aula experimental</span>
-                    </a>
                 </div>
-            </div>
-        </section>
+            </section>
+
+            {/* --- CONTEÚDO CENTRAL PRETO E BRANCO --- */}
+            <section className="py-24 bg-[#111] text-gray-100 text-center px-6">
+                <div className="max-w-3xl mx-auto space-y-6" data-aos="fade-up">
+                    <h2 className="text-3xl font-extrabold uppercase tracking-widest text-white">
+                        A Filosofia Constrictor
+                    </h2>
+                    <p className="text-lg leading-relaxed text-gray-300">
+                        Inspirado nas serpentes constritoras, nosso estilo único de Jiu-Jitsu
+                        enfatiza pressão, controle e estratégia. Uma abordagem precisa e
+                        científica desenvolvida pelo Mestre Ataíde Junior — eficaz no
+                        Jiu-Jitsu, MMA, Luta Livre e Judô.
+                    </p>
+                </div>
+            </section>
+
+            {/* --- PARALLAX 3: IMAGEM DE FUNDO FIXA --- */}
+            <section
+                className="relative h-[85vh] flex items-center justify-center bg-fixed bg-cover bg-center"
+                style={{
+                    backgroundImage: 'url(/constrictor.webp)',
+                }}
+            >
+                <div className="absolute inset-0 bg-black/60"></div>
+                <div
+                    className="relative z-10 text-center max-w-2xl px-6"
+                    data-aos="fade-up"
+                >
+                    <h2 className="text-3xl sm:text-4xl font-bold mb-4 uppercase tracking-wide">
+                        Campeões Mundiais
+                    </h2>
+                    <p className="text-lg opacity-90 leading-relaxed text-gray-200">
+                        Formamos atletas de elite que competem nas maiores organizações do
+                        mundo: UFC, ONE Championship e Shooto Brasil. Nomes como Rani Yahya,
+                        Renato Moicano, Paulo Thiago e Adriano Moraes carregam nossa bandeira
+                        com honra e tradição.
+                    </p>
+                </div>
+            </section>
+
+            {/* --- SEÇÃO FINAL: VALORES (PRETO E BRANCO) --- */}
+            <section className="py-24 bg-black text-white text-center px-6">
+                <div className="max-w-5xl mx-auto" data-aos="fade-up">
+                    <h2 className="text-3xl font-extrabold mb-12 uppercase tracking-widest">
+                        Mais que uma Equipe, uma Família
+                    </h2>
+                    <div className="grid md:grid-cols-3 gap-10">
+                        {/* TRADIÇÃO */}
+                        <div className="space-y-5">
+                            <div className="w-14 h-14 border border-white/30 rounded-full mx-auto flex items-center justify-center hover:bg-white/10 transition">
+                                <span className="text-2xl">👑</span>
+                            </div>
+                            <h3 className="text-xl font-semibold uppercase">Tradição</h3>
+                            <p className="text-gray-400">
+                                Raízes no Jiu-Jitsu clássico, com legado que remonta aos
+                                primórdios da arte suave.
+                            </p>
+                        </div>
+
+                        {/* INOVAÇÃO */}
+                        <div className="space-y-5">
+                            <div className="w-14 h-14 border border-white/30 rounded-full mx-auto flex items-center justify-center hover:bg-white/10 transition">
+                                <span className="text-2xl">⚡</span>
+                            </div>
+                            <h3 className="text-xl font-semibold uppercase">Inovação</h3>
+                            <p className="text-gray-400">
+                                Sistema tático e científico de Jiu-Jitsu Constrictor,
+                                aprimorado por décadas de experiência.
+                            </p>
+                        </div>
+
+                        {/* GLOBAL */}
+                        <div className="space-y-5">
+                            <div className="w-14 h-14 border border-white/30 rounded-full mx-auto flex items-center justify-center hover:bg-white/10 transition">
+                                <span className="text-2xl">🌎</span>
+                            </div>
+                            <h3 className="text-xl font-semibold uppercase">Global</h3>
+                            <p className="text-gray-400">
+                                Presente no Brasil e Austrália, levando nossa filosofia marcial
+                                além das fronteiras.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
     )
 }
