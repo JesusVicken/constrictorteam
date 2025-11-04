@@ -39,7 +39,7 @@ export default function SobrePage() {
         '/mestre5.jpg', '/mestre6.jpg', '/mestre7.jpg', '/mestre8.jpg',
         '/mestre9.jpg', '/mestre10.jpg', '/mestre11.jpg', '/mestre12.jpg',
         '/mestre13.jpg', '/mestre14.jpg', '/mestre15.jpg', '/mestre16.jpg',
-        '/mestre17.jpg', '/mestre18.jpg', '/mestre19.jpg'
+        '/mestre17.jpg', '/mestre18.jpg', '/mestre19.jpg' ,'/mestre19.jpg', '/mestre20.jpg', '/mestre21.jpg', '/mestre22.jpg'
     ]
 
     useEffect(() => {
