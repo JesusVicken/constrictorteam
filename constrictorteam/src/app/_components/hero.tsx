@@ -20,7 +20,7 @@ export default function Hero() {
             <section className="relative h-screen flex items-center justify-center text-center overflow-hidden">
                 <video
                     className="absolute top-0 left-0 w-full h-full object-cover"
-                    src="/bgcobra.mp4"
+                    src="/cobra.mp4"
                     autoPlay
                     loop
                     muted
@@ -59,10 +59,11 @@ export default function Hero() {
                         Um Legado de Excelência
                     </h2>
                     <p className="text-lg opacity-90 leading-relaxed text-gray-200">
-                        Liderada pela família Ludgero, a Constrictor Team carrega a tradição
-                        do Grão-Mestre Armando Wriedt, um dos primeiros faixas-pretas de Hélio
-                        Gracie. Mais de quatro décadas moldando campeões no Jiu-Jitsu, MMA e
-                        artes marciais.
+                        <strong>Mestre Ataíde Ludgero Jr.</strong> – Fundador e Líder da Constrictor Team
+                        Iniciou sua jornada no Judô aos 4 anos. Hoje é faixa preta 6º dan em Jiu-Jitsu, além de graduações em Judô, Luta Livre, Taekwondo e Muay Thai.
+                        Aluno do lendário Mestre Armando Wriedt, Ataíde Ludgero Jr. é um exemplo de excelência, versatilidade e amor pelo ensino.
+
+                        Além das artes marciais, é biólogo, especialista em répteis e defensor da sustentabilidade. Seu legado é moldar gerações, dentro e fora do tatame.
                     </p>
                 </div>
             </section>
@@ -71,13 +72,10 @@ export default function Hero() {
             <section className="py-24 bg-[#111] text-gray-100 text-center px-6">
                 <div className="max-w-3xl mx-auto space-y-6" data-aos="fade-up">
                     <h2 className="text-3xl font-extrabold uppercase tracking-widest text-white">
-                        A Filosofia Constrictor
+                        Transformando vidas por meio do Jiu-Jitsu
                     </h2>
                     <p className="text-lg leading-relaxed text-gray-300">
-                        Inspirado nas serpentes constritoras, nosso estilo único de Jiu-Jitsu
-                        enfatiza pressão, controle e estratégia. Uma abordagem precisa e
-                        científica desenvolvida pelo Mestre Ataíde Junior — eficaz no
-                        Jiu-Jitsu, MMA, Luta Livre e Judô.
+                        No Constrictor Team – Instituto Vida Suave, acreditamos que o Jiu-Jitsu vai além do tatame: é uma filosofia de vida. Nosso projeto social tem como missão oferecer disciplina, respeito, saúde e desenvolvimento pessoal por meio da arte suave.
                     </p>
                 </div>
             </section>
@@ -86,7 +84,7 @@ export default function Hero() {
             <section
                 className="relative h-[85vh] flex items-center justify-center bg-fixed bg-cover bg-center"
                 style={{
-                    backgroundImage: 'url(/constrictor.webp)',
+                    backgroundImage: 'url(/backg.png)',
                 }}
             >
                 <div className="absolute inset-0 bg-black/60"></div>
@@ -95,13 +93,12 @@ export default function Hero() {
                     data-aos="fade-up"
                 >
                     <h2 className="text-3xl sm:text-4xl font-bold mb-4 uppercase tracking-wide">
-                        Campeões Mundiais
+                        Projeto Social Constrictor Team Instituto Vida Suave
                     </h2>
                     <p className="text-lg opacity-90 leading-relaxed text-gray-200">
-                        Formamos atletas de elite que competem nas maiores organizações do
-                        mundo: UFC, ONE Championship e Shooto Brasil. Nomes como Rani Yahya,
-                        Renato Moicano, Paulo Thiago e Adriano Moraes carregam nossa bandeira
-                        com honra e tradição.
+                        Nossa missão é transformar vidas através do Jiu-Jitsu
+                        Mais do que um esporte, o Jiu-Jitsu é uma ferramenta de transformação social. O Instituto Vida Suave nasceu para oferecer oportunidades a crianças, jovens e adultos em situação de vulnerabilidade.
+                        Com aulas regulares, acompanhamento, valores sólidos e um ambiente de respeito, o projeto promove educação, saúde, disciplina e inclusão.
                     </p>
                 </div>
             </section>
