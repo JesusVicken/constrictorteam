@@ -8,12 +8,12 @@ export default function Modalidades() {
         {
             nome: 'Brazilian Jiu-Jitsu',
             descricao: 'Arte suave que ensina técnica, disciplina e autoconfiança, ideal para todas as idades.',
-            imagem: '/jiu.jpg',
+            imagem: '/constr.png',
         },
         {
             nome: 'No-Gi',
             descricao: 'Modalidade de combate que foca em técnicas de chão e finalizações, desenvolvendo força e estratégia.',
-            imagem: '/nogi.jpg',
+            imagem: '/constrictor123.png',
         },
         {
             nome: 'MMA',
@@ -24,6 +24,11 @@ export default function Modalidades() {
             nome: 'Jiu-Jitsu Kids',
             descricao: 'Treinamento voltado para crianças, promovendo disciplina, coordenação e socialização desde cedo.',
             imagem: '/kids.png',
+        },
+        {
+            nome: 'Luta Livre',
+            descricao: 'Luta livre é primariamente uma forma de submission wrestling, é uma luta agarrada com o objetivo de imobilizar o oponente e finaliza-lo.',
+            imagem: '/lutalivre.png',
         },
         {
             nome: 'Capoeira',

@@ -59,7 +59,7 @@ export default function Hero() {
                         Um Legado de Excelência
                     </h2>
                     <p className="text-lg opacity-90 leading-relaxed text-gray-200">
-                        <strong>Mestre Ataíde Ludgero Jr.</strong> – Fundador e Líder da Constrictor Team
+                        <strong>Mestre Ataíde Ludgero Jr.</strong> – Fundador e Líder da Constrictor Team.
                         Iniciou sua jornada no Judô aos 4 anos. Hoje é faixa preta 6º dan em Jiu-Jitsu, além de graduações em Judô, Luta Livre, Taekwondo e Muay Thai.
                         Aluno do lendário Mestre Armando Wriedt, Ataíde Ludgero Jr. é um exemplo de excelência, versatilidade e amor pelo ensino.
 
@@ -96,14 +96,14 @@ export default function Hero() {
                         Projeto Social Constrictor Team Instituto Vida Suave
                     </h2>
                     <p className="text-lg opacity-90 leading-relaxed text-gray-200">
-                        Nossa missão é transformar vidas através do Jiu-Jitsu
+                        Nossa missão é transformar vidas através do Jiu-Jitsu.
                         Mais do que um esporte, o Jiu-Jitsu é uma ferramenta de transformação social. O Instituto Vida Suave nasceu para oferecer oportunidades a crianças, jovens e adultos em situação de vulnerabilidade.
                         Com aulas regulares, acompanhamento, valores sólidos e um ambiente de respeito, o projeto promove educação, saúde, disciplina e inclusão.
                     </p>
                 </div>
             </section>
 
-            {/* --- SEÇÃO FINAL: VALORES (PRETO E BRANCO) --- */}
+            {/* --- SEÇÃO FINAL ANTIGA: VALORES --- */}
             <section className="py-24 bg-black text-white text-center px-6">
                 <div className="max-w-5xl mx-auto" data-aos="fade-up">
                     <h2 className="text-3xl font-extrabold mb-12 uppercase tracking-widest">
@@ -145,6 +145,46 @@ export default function Hero() {
                                 além das fronteiras.
                             </p>
                         </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* --- NOVA SEÇÃO: GRADUAÇÃO CONSTRICTOR TEAM 2025 --- */}
+            <section
+                className="relative h-[90vh] flex items-center justify-center bg-fixed bg-cover bg-center text-center"
+                style={{
+                    backgroundImage: 'url(/graduacao.jpeg)',
+                    backgroundPosition: 'center 30%', // Foca na parte superior da imagem
+                }}
+            >
+                <div className="absolute inset-0 bg-black/70"></div>
+                <div className="relative z-10 max-w-3xl px-6" data-aos="fade-up">
+                    <h2 className="text-4xl sm:text-5xl font-extrabold uppercase mb-6 text-yellow-400 drop-shadow-[0_0_15px_rgba(255,255,0,0.6)]">
+                        Encontro Histórico de Faixas Pretas - Graduação 2025
+                    </h2>
+                    <p className="text-lg sm:text-xl leading-relaxed text-gray-200 mb-8">
+                        Atenção, faixas pretas da <strong>Constrictor Team</strong> de todo o Brasil e do mundo!
+                        Está chegando o maior encontro da nossa história — um marco de legado, honra e irmandade.
+                    </p>
+
+                    <div className="space-y-2 text-gray-300 text-base sm:text-lg">
+                        <p>📅 <strong>Data:</strong> 29 de novembro de 2025</p>
+                        <p>⏰ <strong>Horário:</strong> 11h da manhã</p>
+                        <p>📍 <strong>Local:</strong> Centro de Treinamento Constrictor Team</p>
+                        <p>👕 <strong>Traje obrigatório:</strong> Kimono branco</p>
+                    </div>
+
+                    <p className="mt-8 text-gray-300 italic">
+                        ⚠️ Evento exclusivo e restrito a faixas pretas Constrictor Team.
+                    </p>
+
+                    <div className="mt-10">
+                        <p className="text-lg text-gray-200 font-light max-w-xl mx-auto">
+                            Venha honrar sua faixa e sua história neste grande encontro que simboliza o caminho, a força e o legado da nossa equipe.
+                        </p>
+                        <p className="mt-6 text-xl font-semibold text-white uppercase tracking-wider">
+                            Constrictor Team – Honra, Técnica e Irmandade
+                        </p>
                     </div>
                 </div>
             </section>

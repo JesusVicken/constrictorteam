@@ -31,79 +31,81 @@ export default function Contact() {
 
     return (
         <section className="bg-black text-white">
-            <div className="container mx-auto px-4 py-16">
-                {/* Informações e Contatos */}
-                <footer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mb-12">
-                    {/* Sobre */}
+            <div className="max-w-7xl mx-auto px-6 sm:px-8 py-20">
+                {/* Grade Responsiva Principal */}
+                <footer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+                    {/* SOBRE */}
                     <div data-aos="fade-up">
-                        <div className="mb-6">
+                        <div className="flex flex-col items-center sm:items-start mb-6">
                             <Image
                                 src="/constrictor.webp"
                                 alt="Logo Constrictor Team"
-                                width={200}
+                                width={220}
                                 height={80}
                                 priority
-                                className="mx-auto md:mx-0"
+                                className="drop-shadow-md"
                             />
                         </div>
-                        <p className="mb-6 text-gray-300 leading-relaxed max-w-sm">
+                        <p className="text-gray-300 leading-relaxed mb-8 text-center sm:text-left">
                             A <strong>Constrictor Team</strong> é referência em
-                            jiu-jitsu, defesa pessoal e condicionamento físico.
-                            Treine com os melhores professores e faça parte
-                            dessa equipe campeã.
+                            formar cidadãos conscientes.
+                            Preparar para a vida com base em valores.
+                            Construir autoestima e propósito.
+                            Ensinar a filosofia do Jiu-Jitsu como caminho de superação.
                         </p>
                         <a
                             href={whatsappLink}
-                            // Cor original do WhatsApp para o botão
-                            className="bg-[#25D366] text-white hover:bg-[#1DA851] px-6 py-3 rounded-md font-medium flex items-center justify-center md:justify-start gap-2 transition-colors w-full sm:w-fit"
+                            className="w-full sm:w-auto bg-[#25D366] text-white hover:bg-[#1DA851] transition-colors px-6 py-3 rounded-md font-medium flex items-center justify-center gap-2 shadow-md"
                             target="_blank"
                             rel="noopener noreferrer"
+                            aria-label="Fale conosco via WhatsApp"
                             data-aos="zoom-in"
-                            data-aos-delay="200"
                         >
                             <WhatsappLogo className="w-5 h-5" />
-                            Contato via WhatsApp
+                            Vamos treinar!?
                         </a>
                     </div>
 
-                    {/* Contatos */}
+                    {/* CONTATOS */}
                     <div data-aos="fade-up" data-aos-delay="100">
-                        <h3 className="text-2xl font-semibold mb-4 text-white">
+                        <h3 className="text-2xl font-semibold mb-6 text-center sm:text-left">
                             Contatos
                         </h3>
-                        <div className="space-y-3 text-gray-300">
-                            <p className="flex items-center gap-2">
-                                <Envelope className="text-gray-300 w-5 h-5" /> {/* Mantido cinza */}
-                                constrictorteam@gmail.com
-                            </p>
-                            <p className="flex items-center gap-2">
-                                <Phone className="text-gray-300 w-5 h-5" /> {/* Mantido cinza */}
-                                (61) 99162-7171
-                            </p>
-                            <p className="flex items-start gap-2 max-w-xs">
-                                <MapPin className="text-gray-300 w-5 h-5 flex-shrink-0" /> {/* Mantido cinza */}
-                                Constrictor Team - Sede<br />
-                                SIG Q. 1, Lote 385, Brasília - DF
-                            </p>
-                        </div>
+                        <ul className="space-y-4 text-gray-300 text-center sm:text-left">
+                            <li className="flex flex-col sm:flex-row sm:items-center justify-center sm:justify-start gap-2">
+                                <Envelope className="text-gray-400 w-5 h-5 inline-block" />
+                                <span>contato@constrictorteam.com.br</span>
+                            </li>
+                            <li className="flex flex-col sm:flex-row sm:items-center justify-center sm:justify-start gap-2">
+                                <Phone className="text-gray-400 w-5 h-5 inline-block" />
+                                <span>(61) 99874-8228</span>
+                            </li>
+                            <li className="flex gap-2 justify-center sm:justify-start items-start text-sm leading-relaxed">
+                                <MapPin className="text-gray-400 w-5 h-5 flex-shrink-0 mt-1" />
+                                <span>
+                                    Centro de Treinamento Constrictor Team - Sede<br />
+                                    Parque da Cidade, Estacionamento 08 - Brasília/DF<br />
+                                    Unidades e filiais por todo o Brasil
+                                </span>
+                            </li>
+                        </ul>
                     </div>
 
-                    {/* Redes Sociais */}
+                    {/* REDES SOCIAIS */}
                     <div data-aos="fade-up" data-aos-delay="200">
-                        <h3 className="text-2xl font-semibold mb-4 text-white">
-                           Acompanhe nossas Redes Sociais
+                        <h3 className="text-2xl font-semibold mb-6 text-center sm:text-left">
+                            Acompanhe nas Redes
                         </h3>
-                        <p className="mb-4 text-gray-300">
-                            Siga a <strong>Constrictor Team</strong> e acompanhe
-                            nossos treinos e eventos.
+                        <p className="text-gray-300 mb-6 text-center sm:text-left leading-relaxed">
+                            Siga a <strong>Constrictor Team</strong> e fique por dentro
+                            dos nossos treinos, eventos e conquistas.
                         </p>
-                        <div className="flex gap-5">
+                        <div className="flex justify-center sm:justify-start gap-6">
                             <a
                                 href="https://www.facebook.com/Constrictorteam"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                // Cor do Facebook
-                                className="hover:text-blue-400 transition-colors text-[#1877F2]"
+                                className="text-[#1877F2] hover:scale-110 transition-transform"
                                 aria-label="Facebook"
                             >
                                 <FacebookLogo className="w-8 h-8" />
@@ -112,19 +114,16 @@ export default function Contact() {
                                 href="https://www.instagram.com/constrictorteam/"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                // Cor aproximada do Instagram (o gradiente é mais complexo em CSS puro)
-                                className="hover:text-pink-400 transition-colors text-[#E4405F]"
+                                className="text-[#E4405F] hover:scale-110 transition-transform"
                                 aria-label="Instagram"
                             >
                                 <InstagramLogo className="w-8 h-8" />
                             </a>
-                            {/* Opcional: Adicionar ícone do WhatsApp aqui também se quiser um link separado */}
                             <a
                                 href={whatsappLink}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                // Cor do WhatsApp
-                                className="hover:text-[#1DA851] transition-colors text-[#25D366]"
+                                className="text-[#25D366] hover:scale-110 transition-transform"
                                 aria-label="WhatsApp"
                             >
                                 <WhatsappLogo className="w-8 h-8" />
@@ -134,18 +133,22 @@ export default function Contact() {
                 </footer>
             </div>
 
-            {/* Mapa - Localização correta da Constrictor Team */}
-            <div className="relative w-full h-[300px] md:h-[400px] lg:h-[450px] border-t border-gray-700">
+            {/* MAPA RESPONSIVO */}
+            <div className="relative w-full h-[320px] sm:h-[400px] lg:h-[450px] border-t border-gray-700">
                 <iframe
                     title="Constrictor Team Brasília"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3839.43166299863!2d-47.92540938515091!3d-15.795632889052042!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935a3997e3357597%3A0xc4b7a1d1e4e4e4e!2sConstrictor%20Team%20-%20Sede!5e0!3m2!1spt-BR!2sbr!4v1678901234567!5m2!1spt-BR!2sbr"
-                    width="100%"
-                    height="100%"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3839.000338429802!2d-47.9170703!3d-15.8087543!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935a3b896d8b3de5%3A0x54ddfa28bf4248bb!2sConstrictor%20Team!5e0!3m2!1spt-BR!2sbr!4v1730816823000!5m2!1spt-BR!2sbr"
+                    className="absolute inset-0 w-full h-full"
                     loading="lazy"
                     style={{ border: 0 }}
                     allowFullScreen
                     referrerPolicy="no-referrer-when-downgrade"
                 ></iframe>
+            </div>
+
+            {/* COPYRIGHT / RODAPÉ FINAL */}
+            <div className="text-center text-gray-500 py-6 text-sm border-t border-gray-800">
+                © {new Date().getFullYear()} Constrictor Team — Todos os direitos reservados.
             </div>
         </section>
     )
