@@ -1,10 +1,12 @@
+
+
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import Image from 'next/image'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
-import { Calendar, Clock, MapPin, Users, Navigation, ChevronLeft, ChevronRight } from 'lucide-react'
+import { Calendar, Clock, MapPin, Users, Navigation, ChevronLeft, ChevronRight, Play, Pause } from 'lucide-react'
 import { Autoplay, Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
@@ -21,6 +23,7 @@ interface Evento {
     traje: string
     descricao: string
     imagem: string
+    video?: string
     tipo: 'faixa-preta' | 'graduacao'
     destaque?: boolean
 }
@@ -47,6 +50,7 @@ const EVENTOS: Evento[] = [
         traje: "Kimono completo",
         descricao: "Momento de celebração, reconhecimento e superação, que marca mais um passo na jornada de cada guerreiro dentro do tatame. Mais do que trocar de faixa, é o momento de honrar o esforço, a disciplina e a evolução.",
         imagem: "/graduacaoBreno.jpeg",
+        video: "/graduacaoBreno.mp4",
         tipo: 'graduacao'
     }
 ]
@@ -72,6 +76,73 @@ function CustomBadge({
         <span className={`${baseStyles} ${variants[variant]} ${className}`}>
             {children}
         </span>
+    )
+}
+
+// Componente de Video Player
+function VideoPlayer({ src, poster, className = '' }: { src: string, poster: string, className?: string }) {
+    const videoRef = useRef<HTMLVideoElement>(null)
+    const [isPlaying, setIsPlaying] = useState(false)
+    const [showControls, setShowControls] = useState(false)
+
+    const togglePlay = () => {
+        if (videoRef.current) {
+            if (isPlaying) {
+                videoRef.current.pause()
+            } else {
+                videoRef.current.play()
+            }
+            setIsPlaying(!isPlaying)
+        }
+    }
+
+    const handleVideoEnd = () => {
+        setIsPlaying(false)
+    }
+
+    return (
+        <div
+            className={`relative aspect-[4/3] rounded-lg overflow-hidden bg-black ${className}`}
+            onMouseEnter={() => setShowControls(true)}
+            onMouseLeave={() => setShowControls(false)}
+        >
+            <video
+                ref={videoRef}
+                src={src}
+                poster={poster}
+                className="w-full h-full object-cover"
+                loop={false}
+                muted={false}
+                onEnded={handleVideoEnd}
+                onClick={togglePlay}
+            />
+
+            {/* Overlay de controle */}
+            <div
+                className={`absolute inset-0 bg-black/30 transition-opacity duration-300 ${showControls || !isPlaying ? 'opacity-100' : 'opacity-0'}`}
+                onClick={togglePlay}
+            >
+                <div className="absolute inset-0 flex items-center justify-center">
+                    <button
+                        className={`p-4 bg-white/20 backdrop-blur-sm rounded-full transition-all duration-300 hover:bg-white/30 ${showControls || !isPlaying ? 'scale-100' : 'scale-0'}`}
+                        onClick={togglePlay}
+                    >
+                        {isPlaying ? (
+                            <Pause className="w-8 h-8 text-white" />
+                        ) : (
+                            <Play className="w-8 h-8 text-white" />
+                        )}
+                    </button>
+                </div>
+            </div>
+
+            {/* Badge de vídeo */}
+            <div className="absolute top-2 left-2">
+                <CustomBadge className="bg-red-600 text-white border-none">
+                    🎥 Vídeo
+                </CustomBadge>
+            </div>
+        </div>
     )
 }
 
@@ -443,15 +514,28 @@ function EventoCard({ evento, mobile = false, ...props }: { evento: Evento, mobi
                             EVENTO PRINCIPAL
                         </CustomBadge>
                     )}
+
+                    {/* Container de Mídia - Imagem ou Vídeo */}
                     <div className="relative aspect-[4/3] rounded-lg overflow-hidden mb-3 md:mb-4 mt-1 md:mt-2 bg-black">
-                        <Image
-                            src={evento.imagem}
-                            alt={evento.titulo}
-                            fill
-                            className="object-contain group-hover:scale-105 transition-transform duration-500"
-                            quality={90}
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                        {evento.video ? (
+                            <VideoPlayer
+                                src={evento.video}
+                                poster={evento.imagem}
+                                className="group-hover:scale-105 transition-transform duration-500"
+                            />
+                        ) : (
+                            <>
+                                <Image
+                                    src={evento.imagem}
+                                    alt={evento.titulo}
+                                    fill
+                                    className="object-contain group-hover:scale-105 transition-transform duration-500"
+                                    quality={90}
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                            </>
+                        )}
+
                         <CustomBadge className={`absolute top-2 md:top-3 right-2 md:right-3 ${evento.tipo === 'faixa-preta'
                             ? 'bg-white text-black'
                             : 'bg-white text-black border border-gray-300'
