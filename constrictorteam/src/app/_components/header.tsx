@@ -43,9 +43,9 @@ export default function Header() {
                             Horários
                         </Button>
                     </Link>
-                    <Link href="/modalidade">
+                    <Link href="/clientes">
                         <Button variant="ghost" className="text-base">
-                            Modalidades
+                            Graduação 2025
                         </Button>
                     </Link>
                     <Link href="/contato">
@@ -53,7 +53,7 @@ export default function Header() {
                             Contato
                         </Button>
                     </Link>
-                    <Link href="/contato123">
+                    <Link href="/encontre">
                         <Button variant="ghost" className="text-base">
                             Encontre uma CONSTRICTOR perto de você
                         </Button>
@@ -106,13 +106,13 @@ export default function Header() {
                             Horário
                         </Button>
                     </Link>
-                    <Link href="/modalidade">
+                    <Link href="/clientes">
                         <Button
                             variant="ghost"
                             className="w-full justify-center text-base" // <-- Alterado de justify-start
                             onClick={() => setMobileMenuOpen(false)}
                         >
-                            Modalidades
+                            Graduação 2025
                         </Button>
                     </Link>
                     <Link href="/contato">
