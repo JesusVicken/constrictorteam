@@ -43,7 +43,7 @@ export default function Header() {
                             Horários
                         </Button>
                     </Link>
-                    <Link href="/clientes">
+                    <Link href="/graduacao">
                         <Button variant="ghost" className="text-base">
                             Graduação 2025
                         </Button>
@@ -106,7 +106,7 @@ export default function Header() {
                             Horário
                         </Button>
                     </Link>
-                    <Link href="/clientes">
+                    <Link href="/graduacao">
                         <Button
                             variant="ghost"
                             className="w-full justify-center text-base" // <-- Alterado de justify-start
