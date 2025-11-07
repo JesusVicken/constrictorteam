@@ -1,3 +1,6 @@
+
+
+
 'use client'
 
 import { useEffect } from 'react'
@@ -103,48 +106,18 @@ export default function Hero() {
                 </div>
             </section>
 
-            {/* --- SEÇÃO FINAL ANTIGA: VALORES --- */}
-            <section className="py-24 bg-black text-white text-center px-6">
-                <div className="max-w-5xl mx-auto" data-aos="fade-up">
-                    <h2 className="text-3xl font-extrabold mb-12 uppercase tracking-widest">
-                        Mais que uma Equipe, uma Família
-                    </h2>
-                    <div className="grid md:grid-cols-3 gap-10">
-                        {/* TRADIÇÃO */}
-                        <div className="space-y-5">
-                            <div className="w-14 h-14 border border-white/30 rounded-full mx-auto flex items-center justify-center hover:bg-white/10 transition">
-                                <span className="text-2xl">👑</span>
-                            </div>
-                            <h3 className="text-xl font-semibold uppercase">Tradição</h3>
-                            <p className="text-gray-400">
-                                Raízes no Jiu-Jitsu clássico, com legado que remonta aos
-                                primórdios da arte suave.
-                            </p>
-                        </div>
-
-                        {/* INOVAÇÃO */}
-                        <div className="space-y-5">
-                            <div className="w-14 h-14 border border-white/30 rounded-full mx-auto flex items-center justify-center hover:bg-white/10 transition">
-                                <span className="text-2xl">⚡</span>
-                            </div>
-                            <h3 className="text-xl font-semibold uppercase">Inovação</h3>
-                            <p className="text-gray-400">
-                                Sistema tático e científico de Jiu-Jitsu Constrictor,
-                                aprimorado por décadas de experiência.
-                            </p>
-                        </div>
-
-                        {/* GLOBAL */}
-                        <div className="space-y-5">
-                            <div className="w-14 h-14 border border-white/30 rounded-full mx-auto flex items-center justify-center hover:bg-white/10 transition">
-                                <span className="text-2xl">🌎</span>
-                            </div>
-                            <h3 className="text-xl font-semibold uppercase">Global</h3>
-                            <p className="text-gray-400">
-                                Presente no Brasil e Austrália, levando nossa filosofia marcial
-                                além das fronteiras.
-                            </p>
-                        </div>
+            {/* --- NOVA SEÇÃO: FOTO CONSTRICTOR TEAM --- */}
+            <section className="py-8 bg-black text-white text-center px-6">
+                <div className="max-w-4xl mx-auto" data-aos="fade-up">
+                    <div className="relative rounded-lg overflow-hidden shadow-2xl">
+                        <Image
+                            src="/constrictor.webp"
+                            alt="Constrictor Team - Família"
+                            width={1179}
+                            height={719}
+                            className="w-full h-auto object-cover"
+                            priority
+                        />
                     </div>
                 </div>
             </section>

@@ -71,9 +71,9 @@ const unidades: Unidade[] = [
         image: '/samambaia.png',
     },
     {
-        title: 'Constrictor Team - Sobradinho II',
+        title: 'Constrictor Team - Sobradinho',
         professors: [{ name: 'Prof. Manoel Campos' }],
-        image: '/sobradinho.png',
+        image: '/sobradinho1.png',
     },
     {
         title: 'Constrictor Team - Lago Norte',
