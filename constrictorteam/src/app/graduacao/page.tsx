@@ -478,7 +478,7 @@ export default function Graduacao2025() {
                             e lealdade à nossa família.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center">
-                            <Button
+                            {/* <Button
                                 size="lg"
                                 className="bg-white text-black hover:bg-gray-200 px-6 md:px-8 py-2 md:py-3 text-base md:text-lg font-semibold border border-gray-300"
                             >
@@ -490,7 +490,7 @@ export default function Graduacao2025() {
                                 className="border-white text-black hover:bg-white/10 px-6 md:px-8 py-2 md:py-3 text-base md:text-lg"
                             >
                                 Mais Informações
-                            </Button>
+                            </Button> */}
                         </div>
                     </div>
                 </div>

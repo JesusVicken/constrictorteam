@@ -55,7 +55,7 @@ export default function Header() {
                     </Link>
                     <Link href="/encontre">
                         <Button variant="ghost" className="text-base">
-                            Encontre uma CONSTRICTOR perto de você
+                            Nosso CT
                         </Button>
                     </Link>
                 </nav>
@@ -124,13 +124,13 @@ export default function Header() {
                             Contato
                         </Button>
                     </Link>
-                    <Link href="/contato123">
+                    <Link href="/encontre">
                         <Button
                             variant="ghost"
                             className="w-full justify-center text-base h-auto py-2 text-center" // <-- Alterado de justify-start e text-left
                             onClick={() => setMobileMenuOpen(false)}
                         >
-                            Encontre uma CONSTRICTOR perto de você
+                            Nosso CT
                         </Button>
                     </Link>
                 </div>
