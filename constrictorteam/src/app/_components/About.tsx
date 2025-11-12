@@ -46,17 +46,25 @@ export function About() {
                         </p>
 
                         <p className="text-gray-700 text-justify">
-                            A Constrictor Team foi fundada pelo <strong>Mestre Ataíde Júnior</strong>, que iniciou sua trajetória no judô e se aprofundou no jiu-jitsu após treinar com mestres renomados como <strong>Hélio Gracie</strong> e <strong>Armando Wriedt</strong>. A equipe, conhecida por seu estilo de jiu-jitsu inspirado em características de serpentes — como precisão, paciência e adaptabilidade —, é hoje um dos principais centros de <strong>MMA</strong> do Brasil e do mundo.
+                            A Constrictor Team foi fundada pelo <strong>Mestre Ataíde Júnior</strong> - <strong>6° grau de Jiu-Jitsu (Registro CBJJ/IBJJF 5.680)</strong>, que iniciou sua trajetória no judô aos 4 anos de idade e se aprofundou no jiu-jitsu após treinar com mestres renomados como <strong>Hélio Gracie</strong> e <strong>Armando Wriedt</strong>.
                         </p>
 
                         <p className="text-gray-700 text-justify">
-                            Com uma filosofia que une técnica, respeito e superação, a Constrictor Team forma atletas de elite e seres humanos exemplares. Cada treino é uma oportunidade de aprimoramento físico, mental e espiritual, mantendo vivo o legado de seus mestres e o espírito das artes marciais.
+                            Aos 17 anos, Ataíde conheceu <strong>Mestre Popó (José Carneiro Vasconcelos Júnior)</strong>, que desempenhou um papel fundamental em sua trajetória no jiu-jitsu. Juntos, buscaram instrução com o Grão-Mestre Armando Wriedt, faixa vermelha sob a tutela de Hélio Gracie.
+                        </p>
+
+                        <p className="text-gray-700 text-justify">
+                            Com uma filosofia que une técnica, respeito e superação, a Constrictor Team forma atletas de elite e seres humanos exemplares. Baseando-se em sua formação como biólogo especializado em herpetologia, Ataíde desenvolveu um estilo único de Jiu-Jitsu inspirado nas jiboias - com precisão, paciência, controle rígido e pressão sufocante.
                         </p>
 
                         <ul className="space-y-3">
                             <li className="flex items-center gap-2">
                                 <Check className="text-green-600" />
-                                Fundada por Mestre Ataíde Júnior, referência mundial em Jiu-Jitsu e MMA
+                                Fundada por Mestre Ataíde Júnior -<strong>6° grau de Jiu-Jitsu - Registro CBJJ/IBJJF 5.680</strong>
+                            </li>
+                            <li className="flex items-center gap-2">
+                                <Check className="text-green-600" />
+                                Parceria fundamental com Mestre Popó na formação da equipe
                             </li>
                             <li className="flex items-center gap-2">
                                 <Check className="text-green-600" />

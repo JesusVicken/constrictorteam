@@ -46,7 +46,6 @@ export default function Hero() {
                 </div>
             </section>
 
-            {/* --- PARALLAX 2: IMAGEM FIXA --- */}
             <section
                 className="relative h-[85vh] flex items-center justify-center bg-fixed bg-cover bg-center"
                 style={{
@@ -62,14 +61,15 @@ export default function Hero() {
                         Um Legado de Excelência
                     </h2>
                     <p className="text-lg opacity-90 leading-relaxed text-gray-200">
-                        <strong>Mestre Ataíde Ludgero Jr.</strong> – Fundador e Líder da Constrictor Team.
-                        Iniciou sua jornada no Judô aos 4 anos. Hoje é faixa preta 6º dan em Jiu-Jitsu, além de graduações em Judô, Luta Livre, Taekwondo e Muay Thai.
-                        Aluno do lendário Mestre Armando Wriedt, Ataíde Ludgero Jr. é um exemplo de excelência, versatilidade e amor pelo ensino.
-
-                        Além das artes marciais, é biólogo, especialista em répteis e defensor da sustentabilidade. Seu legado é moldar gerações, dentro e fora do tatame.
+                        <strong>Mestre Ataíde Ludgero Jr.</strong> — Fundador e líder da Constrictor Team, é faixa preta 6º grau de Jiu-Jitsu, registrado na CBJJ / IBJJF sob o nº 5.680.
+                        Iniciou sua trajetória nas artes marciais aos 4 anos, no Judô, e desde então dedicou a vida ao aperfeiçoamento técnico e ao ensino.
+                        Além do Jiu-Jitsu, possui graduações em Judô, Luta Livre, Taekwondo e Muay Thai, refletindo sua versatilidade e compromisso com a arte marcial.
+                        Discípulo do lendário Mestre Armando Wriedt, Ataíde é reconhecido por sua excelência, disciplina e paixão por formar campeões dentro e fora dos tatames.
+                        Fora das artes marciais, é biólogo, especialista em répteis e defensor ativo da sustentabilidade um verdadeiro exemplo de dedicação, conhecimento e legado.
                     </p>
                 </div>
             </section>
+
 
             {/* --- CONTEÚDO CENTRAL PRETO E BRANCO --- */}
             <section className="py-24 bg-[#111] text-gray-100 text-center px-6">

@@ -51,6 +51,16 @@ const unidades: Unidade[] = [
         image: '/unb.png',
     },
     {
+        title: 'Constrictor Team - Ministério da Justiça e Segurança Pública',
+        professors: [
+            {
+                name: 'Prof. Glauco Leite',
+                instagram: 'https://www.instagram.com/jiujitsu.mjsp?igsh=b3hscG5oMm44cnVy',
+            },
+        ],
+        image: '/ministerio.png',
+    },
+    {
         title: 'Constrictor Team - Samambaia Sul',
         professors: [
             {
