@@ -142,7 +142,7 @@ export default function CTInfo() {
                                 <div className="group relative">
                                     <div className="relative rounded-xl overflow-hidden shadow-2xl border border-gray-800 transform group-hover:scale-[1.02] transition-all duration-500">
                                         <Image
-                                            src="/ct1.webp"
+                                            src="/ct2.webp"
                                             alt="Ambiente do CT Constrictor Team"
                                             width={600}
                                             height={400}

@@ -1,5 +1,3 @@
-
-
 'use client'
 
 import React, { useEffect, useState, useRef } from 'react'
@@ -428,10 +426,10 @@ export default function Graduacao2025() {
                 >
                     <div className="text-center mb-6 md:mb-8">
                         <h2 className="text-2xl md:text-3xl font-bold text-white mb-3 md:mb-4">
-                            Galeria
+                            Informações da Graduação
                         </h2>
                         <p className="text-gray-400 text-sm md:text-base">
-                            Momentos especiais da nossa trajetória
+                            Algumas informações adicionais sobre a graduação 2025
                         </p>
                     </div>
 
