@@ -3,19 +3,33 @@
 
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 
 export default function Hero() {
+    const [isIOS, setIsIOS] = useState(false)
+
     useEffect(() => {
         AOS.init({
             duration: 800,
             once: true,
             easing: 'ease-in-out',
         })
+
+        // Detecta iOS (iPhone/iPad)
+        if (typeof window !== 'undefined') {
+            const ua = window.navigator.userAgent
+            const iOS = /iPad|iPhone|iPod/.test(ua) || (navigator.userAgent.includes('Mac') && 'ontouchend' in document)
+            setIsIOS(iOS)
+        }
     }, [])
+
+    // Classe condicional: remove bg-fixed no iOS
+    const parallaxClass = isIOS
+        ? 'relative h-[85vh] flex items-center justify-center bg-cover bg-center' // sem fixed
+        : 'relative h-[85vh] flex items-center justify-center bg-fixed bg-cover bg-center'
 
     return (
         <main className="w-full text-white overflow-hidden bg-black">
@@ -46,11 +60,10 @@ export default function Hero() {
                 </div>
             </section>
 
+            {/* --- PARALLAX 2 --- */}
             <section
-                className="relative h-[85vh] flex items-center justify-center bg-fixed bg-cover bg-center"
-                style={{
-                    backgroundImage: 'url(/ataide.jpg)',
-                }}
+                className={parallaxClass}
+                style={{ backgroundImage: 'url(/ataide.jpg)' }}
             >
                 <div className="absolute inset-0 bg-black/60"></div>
                 <div
@@ -65,11 +78,10 @@ export default function Hero() {
                         Iniciou sua trajetória nas artes marciais aos 4 anos, no Judô, e desde então dedicou a vida ao aperfeiçoamento técnico e ao ensino.
                         Além do Jiu-Jitsu, possui graduações em Judô, Luta Livre, Taekwondo e Muay Thai, refletindo sua versatilidade e compromisso com a arte marcial.
                         Discípulo do lendário Mestre Armando Wriedt, Ataíde é reconhecido por sua excelência, disciplina e paixão por formar campeões dentro e fora dos tatames.
-                        Fora das artes marciais, é biólogo, especialista em répteis e defensor ativo da sustentabilidade um verdadeiro exemplo de dedicação, conhecimento e legado.
+                        Fora das artes marciais, é biólogo, especialista em répteis e defensor ativo da sustentabilidade — um verdadeiro exemplo de dedicação, conhecimento e legado.
                     </p>
                 </div>
             </section>
-
 
             {/* --- CONTEÚDO CENTRAL PRETO E BRANCO --- */}
             <section className="py-24 bg-[#111] text-gray-100 text-center px-6">
@@ -83,12 +95,10 @@ export default function Hero() {
                 </div>
             </section>
 
-            {/* --- PARALLAX 3: IMAGEM DE FUNDO FIXA --- */}
+            {/* --- PARALLAX 3 --- */}
             <section
-                className="relative h-[85vh] flex items-center justify-center bg-fixed bg-cover bg-center"
-                style={{
-                    backgroundImage: 'url(/backg.png)',
-                }}
+                className={parallaxClass}
+                style={{ backgroundImage: 'url(/backg.png)' }}
             >
                 <div className="absolute inset-0 bg-black/60"></div>
                 <div
@@ -106,7 +116,7 @@ export default function Hero() {
                 </div>
             </section>
 
-            {/* --- NOVA SEÇÃO: FOTO CONSTRICTOR TEAM --- */}
+            {/* --- FOTO CONSTRICTOR TEAM --- */}
             <section className="py-8 bg-black text-white text-center px-6">
                 <div className="max-w-4xl mx-auto" data-aos="fade-up">
                     <div className="relative rounded-lg overflow-hidden shadow-2xl">
@@ -122,12 +132,14 @@ export default function Hero() {
                 </div>
             </section>
 
-            {/* --- NOVA SEÇÃO: GRADUAÇÃO CONSTRICTOR TEAM 2025 --- */}
+            {/* --- PARALLAX 4: GRADUAÇÃO --- */}
             <section
-                className="relative h-[90vh] flex items-center justify-center bg-fixed bg-cover bg-center text-center"
+                className={isIOS
+                    ? 'relative h-[90vh] flex items-center justify-center bg-cover bg-center text-center'
+                    : 'relative h-[90vh] flex items-center justify-center bg-fixed bg-cover bg-center text-center'}
                 style={{
                     backgroundImage: 'url(/graduacao.jpeg)',
-                    backgroundPosition: 'center 30%', // Foca na parte superior da imagem
+                    backgroundPosition: 'center 30%',
                 }}
             >
                 <div className="absolute inset-0 bg-black/70"></div>

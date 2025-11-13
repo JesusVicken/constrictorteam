@@ -1,3 +1,6 @@
+
+
+
 'use client'
 
 import Image from "next/image"
@@ -13,14 +16,14 @@ export function About() {
 
                     {/* Imagem principal */}
                     <div className="relative" data-aos="fade-up-right" data-aos-delay="300">
-                        <div className="relative w-full h-[400px] rounded-3xl overflow-hidden shadow-lg">
+                        <div className="relative w-full h-[400px] lg:h-[600px] rounded-3xl overflow-hidden shadow-lg">
                             <Image
                                 src="/about.jpg"
                                 alt="Líderes da Constrictor Team"
                                 fill
                                 quality={100}
                                 priority
-                                className="object-cover object-top hover:scale-110 transition-transform duration-500 ease-out"
+                                className="object-cover lg:object-contain object-top hover:scale-110 transition-transform duration-500 ease-out"
                             />
                         </div>
 
@@ -60,7 +63,7 @@ export function About() {
                         <ul className="space-y-3">
                             <li className="flex items-center gap-2">
                                 <Check className="text-green-600" />
-                                Fundada por Mestre Ataíde Júnior -<strong>6° grau de Jiu-Jitsu - Registro CBJJ/IBJJF 5.680</strong>
+                                Fundada por Mestre Ataíde Júnior - 6° grau de Jiu-Jitsu (CBJJ/IBJJF 5.680)
                             </li>
                             <li className="flex items-center gap-2">
                                 <Check className="text-green-600" />
