@@ -116,7 +116,7 @@ const unidades: Unidade[] = [
         image: '/guajiru.png',
     },
 ]
-]
+
 
 export default function Segments() {
     const [emblaRef, emblaApi] = useEmblaCarousel(
