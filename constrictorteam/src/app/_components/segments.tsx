@@ -110,6 +110,12 @@ const unidades: Unidade[] = [
         professors: [{ name: 'Prof. —' }],
         image: '/formosa.png',
     },
+    {
+        title: 'Constrictor Team - Guajiru (CE)',
+        professors: [{ name: 'Prof. Fernando Farias' }],
+        image: '/guajiru.png',
+    },
+]
 ]
 
 export default function Segments() {
