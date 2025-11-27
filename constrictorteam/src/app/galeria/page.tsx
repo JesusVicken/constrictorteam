@@ -263,7 +263,6 @@ export default function Galeria() {
                         </p>
                     </div>
                 </div>
-
                 {/* 4. Grid de Imagens */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-12">
                     {filteredImages.map((image) => (
@@ -272,12 +271,12 @@ export default function Galeria() {
                             className="group relative bg-gray-900 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 cursor-pointer overflow-hidden border border-gray-800 flex flex-col"
                             onClick={() => setSelectedImage(image.id)}
                         >
-                            <div className="relative w-full h-64 md:h-72 overflow-hidden bg-gray-800">
+                            <div className="relative w-full h-96 md:h-[500px] overflow-hidden bg-gray-800">
                                 <Image
                                     src={image.src}
                                     alt={image.alt}
                                     fill
-                                    className="object-cover transition-all duration-700 group-hover:scale-110"
+                                    className="object-cover object-top transition-all duration-700 group-hover:scale-110"
                                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                                 />
                                 <div className="absolute top-3 left-3 z-10">
