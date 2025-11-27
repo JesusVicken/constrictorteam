@@ -22,10 +22,33 @@ import {
 } from '@phosphor-icons/react/dist/ssr'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { motion, AnimatePresence, PanInfo } from 'framer-motion'
+import { motion, AnimatePresence, PanInfo, useInView, animate } from 'framer-motion'
 
 if (typeof window !== 'undefined') {
     gsap.registerPlugin(ScrollTrigger)
+}
+
+// --- Componente de Contagem (Novo) ---
+const CounterItem = ({ value, suffix }: { value: number, suffix: string }) => {
+    const ref = useRef<HTMLSpanElement>(null)
+    const isInView = useInView(ref, { once: true, margin: "-50px" })
+
+    useEffect(() => {
+        if (isInView && ref.current) {
+            const node = ref.current
+            const controls = animate(0, value, {
+                duration: 2.5, // Duração da contagem em segundos
+                ease: "easeOut",
+                onUpdate: (latest) => {
+                    // Atualiza o texto diretamente no DOM para performance
+                    node.textContent = Math.floor(latest) + suffix
+                }
+            })
+            return () => controls.stop()
+        }
+    }, [isInView, value, suffix])
+
+    return <span ref={ref}>0{suffix}</span>
 }
 
 export default function SobrePage() {
@@ -45,11 +68,12 @@ export default function SobrePage() {
         '/mestre17.jpg', '/mestre18.jpg', '/mestre19.jpg', '/mestre20.jpg', '/mestre21.jpg', '/mestre22.jpg', '/mestre23.jpg'
     ]
 
+    // Dados refatorados para separar Valor Numérico do Sufixo
     const achievements = [
-        { icon: Trophy, number: '30+', text: 'Anos de Tradição' },
-        { icon: Users, number: '1000+', text: 'Alunos Formados' },
-        { icon: Sword, number: '50+', text: 'Atletas Profissionais' },
-        { icon: GraduationCap, number: '6º', text: 'Grau Faixa Preta' }
+        { icon: Trophy, value: 30, suffix: '+', text: 'Anos de Tradição' },
+        { icon: Users, value: 1000, suffix: '+', text: 'Alunos Formados' },
+        { icon: Sword, value: 50, suffix: '+', text: 'Atletas Profissionais' },
+        { icon: GraduationCap, value: 6, suffix: 'º', text: 'Grau Faixa Preta' }
     ]
 
     useEffect(() => {
@@ -250,7 +274,7 @@ export default function SobrePage() {
                 </motion.div>
             </section>
 
-            {/* Stats Section */}
+            {/* Stats Section com Contagem Animada */}
             <section className="relative py-16 bg-gradient-to-r from-gray-900 to-black border-y border-white/20">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
@@ -266,8 +290,8 @@ export default function SobrePage() {
                                 <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-white/30 transition-all duration-300 group-hover:scale-110">
                                     <achievement.icon className="w-8 h-8 text-white" />
                                 </div>
-                                <div className="text-3xl lg:text-4xl font-bold text-white mb-2">
-                                    {achievement.number}
+                                <div className="text-3xl lg:text-4xl font-bold text-white mb-2 tabular-nums">
+                                    <CounterItem value={achievement.value} suffix={achievement.suffix} />
                                 </div>
                                 <div className="text-gray-300 font-medium text-sm lg:text-base">
                                     {achievement.text}
@@ -565,14 +589,6 @@ export default function SobrePage() {
                                     {currentImageIndex + 1} / {mestreImages.length}
                                 </span>
                             </div>
-
-                            {/* Title Overlay
-                            <div className="absolute bottom-6 left-6 z-20 bg-black/60 backdrop-blur-sm px-4 py-2 rounded-xl border border-white/30">
-                                <h3 className="text-white font-semibold text-lg">
-                                    Mestre Ataíde Jr. - 6° Grau Faixa Preta
-                                </h3>
-                                <p className="text-gray-300 text-sm">CBJJ/IBJJF 5.680</p>
-                            </div> */}
                         </div>
 
                         {/* Thumbnails */}
