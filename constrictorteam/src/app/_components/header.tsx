@@ -49,7 +49,8 @@ export default function Header() {
                         { name: 'Início', href: '/' },
                         { name: 'Sobre', href: '/sobre' },
                         { name: 'Horários', href: '/grade' },
-                        { name: 'Graduação 2025', href: '/graduacao' },
+                        { name: 'Graduação', href: '/graduacao' },
+                        { name: 'Seminários', href: '/seminario' },
                         { name: 'Galeria', href: '/galeria' },
                         { name: 'Nosso CT', href: '/encontre' },
                     ].map((item) => (

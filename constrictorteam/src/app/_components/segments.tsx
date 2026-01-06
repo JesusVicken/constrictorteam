@@ -87,7 +87,10 @@ const unidades: Unidade[] = [
     },
     {
         title: 'Constrictor Team - Lago Norte',
-        professors: [{ name: 'Prof. Jefferson Pedrosa' }],
+        professors: [{
+            name: 'Prof. Jefferson Pedrosa',
+            instagram: 'https://www.instagram.com/constrictorteam_lagonorte/',
+        }],
         image: '/lagonorte.png',
     },
     {
