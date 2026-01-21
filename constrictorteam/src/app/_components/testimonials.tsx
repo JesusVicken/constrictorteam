@@ -12,23 +12,33 @@ type Mestre = {
     name: string
     image: string
     description?: string
+    role?: string
 }
 
 const linhagem: Mestre[] = [
     {
         name: 'Hélio Gracie',
         image: '/helio.webp',
+        role: 'O Patriarca',
         description: 'Fundador do Gracie Jiu-Jitsu'
     },
     {
         name: 'Armando Wriedt',
         image: '/wriedt.jpg',
+        role: 'Grão-Mestre',
         description: 'Uma das primeiras faixas-pretas de Hélio Gracie'
+    },
+    {
+        name: 'Mestre Popó',
+        image: '/popo.jpeg',
+        role: 'Nosso Mestre',
+        description: 'Pai do Mestre Ataíde e pilar da Constrictor Team'
     },
     {
         name: 'Ataíde Jr.',
         image: '/ataide.jpg',
-        description: 'Nosso Mestre e Fundador da Constrictor Team'
+        role: 'Fundador',
+        description: 'Líder e Fundador da Constrictor Team'
     }
 ]
 
@@ -64,23 +74,18 @@ export default function LineageSection() {
     const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi])
 
     useEffect(() => {
-        if (!emblaApi) {
-            return
-        }
+        if (!emblaApi) return
 
         const onSelect = () => setSelectedIndex(emblaApi.selectedScrollSnap())
         emblaApi.on('select', onSelect)
         onSelect()
 
-        const cleanup = () => {
+        return () => {
             emblaApi.off('select', onSelect)
         }
-
-        return cleanup
     }, [emblaApi])
 
-
-    // GSAP + AOS - CORRIGIDO: função de cleanup sem retorno explícito
+    // GSAP + AOS
     useEffect(() => {
         AOS.init({
             duration: 800,
@@ -89,9 +94,11 @@ export default function LineageSection() {
             disable: isMobile
         })
 
+        let tl: gsap.core.Timeline | null = null;
+
         if (containerRef.current) {
             const cards = containerRef.current.querySelectorAll('.mestre-card')
-            const tl = gsap.timeline()
+            tl = gsap.timeline()
 
             if (isMobile) {
                 tl.fromTo(
@@ -107,7 +114,8 @@ export default function LineageSection() {
                         delay: 0.1
                     }
                 )
-            } else {
+            }
+            else {
                 tl.fromTo(
                     cards,
                     { opacity: 0, y: 60, scale: 0.85 },
@@ -116,7 +124,7 @@ export default function LineageSection() {
                         y: 0,
                         scale: 1,
                         duration: 0.8,
-                        stagger: 0.3,
+                        stagger: 0.2,
                         ease: 'back.out(1.7)',
                         delay: 0.2
                     }
@@ -124,172 +132,146 @@ export default function LineageSection() {
             }
         }
 
-        // Cleanup function sem retorno explícito
         return () => {
-            // Limpeza se necessário
+            if (tl) tl.kill()
         }
     }, [isMobile])
 
     return (
-        <section className="relative text-white py-12 md:py-20 lg:py-28 overflow-hidden">
+        <section className="relative text-white py-12 md:py-20 lg:py-24 overflow-hidden min-h-[600px] flex flex-col justify-center">
             {/* Background */}
             <div className="absolute inset-0 -z-10">
                 <Image
                     src="/backg2.jpg"
-                    alt="Background"
+                    alt="Background Dojo"
                     fill
-                    className="object-cover opacity-40"
+                    className="object-cover opacity-30"
                     priority
                     sizes="100vw"
                     quality={85}
                 />
-                <div className="absolute inset-0 bg-gradient-to-b from-black/95 via-black/85 to-black/95"></div>
+                <div className="absolute inset-0 bg-gradient-to-b from-black via-black/90 to-black"></div>
             </div>
 
             <div className="container px-4 mx-auto max-w-7xl">
                 {/* Cabeçalho */}
-                <div className="text-center mb-8 md:mb-16 lg:mb-20" data-aos="fade-up">
-                    <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-3 md:mb-4 lg:mb-5 tracking-tight leading-tight px-2">
-                        Linhagem do Nosso <span className="text-yellow-400">Mestre Ataíde Jr.</span>
+                <div className="text-center mb-10 md:mb-16" data-aos="fade-up">
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 tracking-tight leading-tight">
+                        Linhagem da<span className="text-yellow-500"> Constrictor Team</span>
                     </h2>
-                    <p className="text-gray-300 max-w-3xl mx-auto text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed px-3">
-                        A Constrictor Team carrega um legado profundo no Jiu-Jitsu Brasileiro, com raízes que remontam ao Grão-Mestre Armando Wriedt, um dos primeiros faixas-pretas de Hélio Gracie.
+                    <p className="text-gray-400 max-w-3xl mx-auto text-sm md:text-base lg:text-lg leading-relaxed px-4">
+                        Honrando o passado para fortalecer o futuro. Nossas raízes no Jiu-Jitsu Brasileiro.
                     </p>
                 </div>
 
                 <div className="relative">
                     {/* Container principal */}
-                    <div className="relative flex justify-center items-center pt-4 md:pt-0">
-                        {/* Navegação mobile/tablet */}
+                    <div className="relative flex justify-center items-center">
+
+                        {/* Botões de Navegação (Apenas Mobile/Tablet) */}
                         {(isMobile || isTablet) && (
                             <>
                                 <button
                                     onClick={scrollPrev}
-                                    className="absolute left-0 top-1/2 -translate-y-1/2 z-30 p-2 sm:p-3 bg-black/40 hover:bg-black/60 backdrop-blur-md rounded-full transition-all duration-300 hover:scale-110 active:scale-95 border border-white/20"
+                                    className="absolute left-0 top-[40%] -translate-y-1/2 z-30 p-2 bg-black/50 backdrop-blur-sm rounded-full border border-white/10 hover:bg-yellow-500 hover:text-black transition-all"
                                     aria-label="Anterior"
                                 >
-                                    <ChevronLeft className="text-white w-4 h-4 sm:w-5 sm:h-5" />
+                                    <ChevronLeft className="w-6 h-6" />
                                 </button>
                                 <button
                                     onClick={scrollNext}
-                                    className="absolute right-0 top-1/2 -translate-y-1/2 z-30 p-2 sm:p-3 bg-black/40 hover:bg-black/60 backdrop-blur-md rounded-full transition-all duration-300 hover:scale-110 active:scale-95 border border-white/20"
+                                    className="absolute right-0 top-[40%] -translate-y-1/2 z-30 p-2 bg-black/50 backdrop-blur-sm rounded-full border border-white/10 hover:bg-yellow-500 hover:text-black transition-all"
                                     aria-label="Próximo"
                                 >
-                                    <ChevronRight className="text-white w-4 h-4 sm:w-5 sm:h-5" />
+                                    <ChevronRight className="w-6 h-6" />
                                 </button>
                             </>
                         )}
 
-                        {/* Linha conectiva desktop */}
+                        {/* Linha Conectiva (Apenas Desktop) */}
                         {!isMobile && (
-                            <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 h-1 bg-gradient-to-r from-transparent via-yellow-400/30 to-transparent z-0 rounded-full ${isTablet ? 'w-[calc(100%-8rem)] max-w-[400px]' : 'w-[calc(100%-12rem)] max-w-[560px]'
-                                }`}>
+                            <div
+                                className={`absolute top-[100px] lg:top-[110px] left-1/2 -translate-x-1/2 h-0.5 bg-gradient-to-r from-transparent via-yellow-500/40 to-transparent z-0 
+                                ${isTablet
+                                        ? 'w-[85%]'
+                                        : 'w-[80%] max-w-[850px]'
+                                    }`}
+                            >
                                 {linhagem.map((_, i) => (
                                     <div
                                         key={i}
-                                        className="absolute -top-1 w-3 h-3 rounded-full bg-yellow-400/50"
+                                        className="absolute top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-yellow-500 shadow-[0_0_10px_rgba(234,179,8,0.5)]"
                                         style={{
                                             left: `${(i / (linhagem.length - 1)) * 100}%`,
-                                            transform: 'translateX(-50%)'
+                                            transform: 'translate(-50%, -50%)'
                                         }}
                                     />
                                 ))}
                             </div>
                         )}
 
-                        {/* Container do Carousel */}
+                        {/* Carousel / Grid Area */}
                         <div
                             ref={emblaRef}
-                            className={`overflow-hidden w-full max-w-6xl ${!isMobile ? 'md:overflow-visible' : ''}`}
+                            className={`overflow-hidden w-full ${!isMobile ? 'md:overflow-visible' : ''}`}
                         >
                             <div
                                 ref={containerRef}
                                 className={`flex relative ${isMobile
-                                    ? 'gap-6 px-4 touch-pan-x snap-x snap-mandatory'
-                                    : isTablet
-                                        ? 'justify-center gap-10 lg:gap-14'
-                                        : 'justify-center gap-12 lg:gap-20'
+                                    ? 'gap-4 px-4 touch-pan-x snap-x snap-mandatory'
+                                    : 'justify-center gap-8 lg:gap-16'
                                     }`}
                             >
                                 {linhagem.map((mestre, index) => (
                                     <div
                                         key={index}
-                                        className={`mestre-card flex flex-col items-center flex-shrink-0 ${isMobile
-                                            ? 'w-[80vw] sm:w-[60vw] snap-center'
-                                            : 'w-auto'
-                                            }`}
+                                        className={`mestre-card flex flex-col items-center flex-shrink-0 relative group 
+                                        ${isMobile ? 'w-[70vw] sm:w-[50vw] snap-center py-4' : 'w-48 lg:w-56'}`}
                                         data-aos={!isMobile ? "fade-up" : undefined}
                                         data-aos-delay={!isMobile ? index * 100 : undefined}
                                     >
-                                        {/* Container da imagem */}
+                                        {/* Container da Imagem */}
                                         <div className={`
-                      relative flex flex-col items-center
-                      ${isMobile
-                                                ? 'w-36 h-36 mb-4 mt-4'
-                                                : isTablet
-                                                    ? 'w-40 h-40 lg:w-44 lg:h-44 mb-5'
-                                                    : 'w-48 h-48 lg:w-52 lg:h-52 mb-6'
-                                            }
-                    `}>
-                                            {/* Imagem do mestre */}
+                                            relative flex flex-col items-center mb-6 transition-transform duration-300
+                                            ${!isMobile && 'group-hover:-translate-y-2'}
+                                        `}>
                                             <div className={`
-                        relative rounded-full overflow-hidden border-3 transition-all duration-500 w-full h-full
-                        ${isMobile
-                                                    ? 'border-yellow-400 shadow-lg'
-                                                    : isTablet
-                                                        ? 'border-yellow-400/80 shadow-xl hover:shadow-2xl'
-                                                        : 'border-yellow-400/90 shadow-2xl hover:shadow-3xl'
+                                                relative rounded-full overflow-hidden border-2 transition-all duration-500
+                                                ${isMobile
+                                                    ? 'w-40 h-40 border-yellow-500 shadow-lg'
+                                                    : 'w-48 h-48 lg:w-52 lg:h-52 border-yellow-500/50 group-hover:border-yellow-400 group-hover:shadow-[0_0_30px_rgba(234,179,8,0.3)]'
                                                 }
-                        ${selectedIndex === index && (isMobile || isTablet)
-                                                    ? 'ring-3 ring-yellow-400 scale-105'
-                                                    : ''
-                                                }
-                        ${!isMobile ? 'hover:scale-105 transition-transform duration-300' : ''}
-                      `}>
+                                                ${selectedIndex === index && isMobile ? 'scale-110 shadow-yellow-500/20' : ''}
+                                            `}>
                                                 <Image
                                                     src={mestre.image}
                                                     alt={mestre.name}
                                                     fill
-                                                    sizes={`
-                            ${isMobile ? '144px' :
-                                                            isTablet ? '160px' : '192px'
-                                                        }
-                          `}
-                                                    className="object-cover"
-                                                    priority={index === 0}
-                                                    style={{
-                                                        objectPosition: 'center top'
-                                                    }}
+                                                    // ALTERAÇÃO AQUI: Removida a classe 'grayscale' condicional
+                                                    className="object-cover transition-all duration-500"
+                                                    sizes="(max-width: 768px) 200px, 250px"
+                                                    priority={index <= 1}
                                                 />
                                             </div>
+
+                                            {/* Ano/Role Tag */}
+                                            {mestre.role && (
+                                                <div className="absolute -bottom-3 bg-gray-900 border border-yellow-500/30 px-3 py-1 rounded-full">
+                                                    <span className="text-xs text-yellow-400 font-bold tracking-wider uppercase">
+                                                        {mestre.role}
+                                                    </span>
+                                                </div>
+                                            )}
                                         </div>
 
-                                        {/* Informações do Mestre - CENTRALIZADO no mobile */}
-                                        <div className="text-center space-y-2 w-full max-w-[280px] mt-4 md:mt-6 mx-auto">
-                                            <h3 className={`
-                        text-white font-bold drop-shadow-lg tracking-wide
-                        ${isMobile
-                                                    ? 'text-lg text-center w-full'
-                                                    : isTablet
-                                                        ? 'text-xl lg:text-2xl'
-                                                        : 'text-2xl lg:text-3xl'
-                                                }
-                      `}>
+                                        {/* Informações */}
+                                        <div className="text-center w-full px-2">
+                                            <h3 className="text-xl lg:text-2xl font-bold text-white mb-2">
                                                 {mestre.name}
                                             </h3>
-                                            {mestre.description && (
-                                                <p className={`
-                          text-gray-300 leading-tight text-center
-                          ${isMobile
-                                                        ? 'text-xs max-w-[200px] mx-auto'
-                                                        : isTablet
-                                                            ? 'text-sm lg:text-base max-w-[240px]'
-                                                            : 'text-base lg:text-lg max-w-[260px]'
-                                                    }
-                        `}>
-                                                    {mestre.description}
-                                                </p>
-                                            )}
+                                            <p className="text-gray-400 text-xs lg:text-sm leading-relaxed max-w-[220px] mx-auto">
+                                                {mestre.description}
+                                            </p>
                                         </div>
                                     </div>
                                 ))}
@@ -297,39 +279,20 @@ export default function LineageSection() {
                         </div>
                     </div>
 
-                    {/* Indicadores de progresso mobile/tablet */}
-                    {(isMobile || isTablet) && (
-                        <div className="flex flex-col items-center mt-6 md:mt-8 space-y-4">
-                            <div className="flex justify-center space-x-3">
-                                {linhagem.map((_, index) => (
-                                    <button
-                                        key={index}
-                                        className={`transition-all duration-300 rounded-full ${selectedIndex === index
-                                            ? 'bg-yellow-400 scale-110'
-                                            : 'bg-gray-600 hover:bg-gray-500'
-                                            } ${isMobile ? 'w-8 h-2' : 'w-10 h-2'
-                                            }`}
-                                        onClick={() => emblaApi?.scrollTo(index)}
-                                        aria-label={`Ver ${linhagem[index].name}`}
-                                    />
-                                ))}
-                            </div>
-
-                            {/* Contador */}
-                            <div className="text-gray-400 text-sm">
-                                <span className="text-yellow-400 font-bold">{selectedIndex + 1}</span>
-                                <span className="mx-2">de</span>
-                                <span>{linhagem.length}</span>
-                            </div>
-                        </div>
-                    )}
-
-                    {/* Instrução para mobile */}
+                    {/* Paginação Mobile */}
                     {isMobile && (
-                        <div className="text-center mt-4">
-                            <p className="text-gray-400 text-xs animate-pulse">
-                                👆 Toque e arraste para navegar
-                            </p>
+                        <div className="flex justify-center items-center mt-8 space-x-2">
+                            {linhagem.map((_, index) => (
+                                <button
+                                    key={index}
+                                    className={`h-1.5 rounded-full transition-all duration-300 ${selectedIndex === index
+                                        ? 'w-8 bg-yellow-500'
+                                        : 'w-2 bg-gray-700'
+                                        }`}
+                                    onClick={() => emblaApi?.scrollTo(index)}
+                                    aria-label={`Ir para slide ${index + 1}`}
+                                />
+                            ))}
                         </div>
                     )}
                 </div>

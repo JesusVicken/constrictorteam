@@ -52,6 +52,7 @@ export default function Header() {
                         { name: 'Graduação', href: '/graduacao' },
                         { name: 'Seminários', href: '/seminario' },
                         { name: 'Galeria', href: '/galeria' },
+                        { name: 'Avisos', href: '/avisos' },
                         { name: 'Nosso CT', href: '/encontre' },
                     ].map((item) => (
                         <Link key={item.name} href={item.href}>
@@ -102,6 +103,7 @@ export default function Header() {
                             { name: 'Graduação 2025', href: '/graduacao' },
                             { name: 'Galeria', href: '/galeria' },
                             { name: 'Contato', href: '/contato' },
+                            { name: 'Avisos', href: '/avisos' },
                             { name: 'Nosso CT', href: '/encontre' },
                         ].map((item) => (
                             <Link
