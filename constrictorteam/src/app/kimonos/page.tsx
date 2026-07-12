@@ -7,51 +7,59 @@ import { ShoppingBag, MessageCircle, ShieldCheck, Truck } from 'lucide-react'
 
 const colecoes = [
     {
-        title: 'Camisas Oficiais',
+        title: 'Camisas Oficiais Constrictor Team',
         description: 'Garanta a sua e fortaleça a identidade da nossa equipe! Encomendas abertas até 05/07/2026. Feitas com tecido premium.',
         link: 'https://chat.whatsapp.com/EdqlulmAqXs30J6rawjA9I?s=cl&p=i&mlu=4',
         images: ['/uniforme/novacolecao.jpeg']
     },
     {
-        title: 'Kimono Constrictor',
-        description: 'A armadura tradicional da nossa equipe. Trançado super resistente, ideal para treinos diários intensos e competições de alto nível.',
+        title: 'Agasalho Oficial Constrictor Team',
+        description: 'Represente a equipe com muito estilo. Material premium, confortável e durável.',
         link: 'https://chat.whatsapp.com/KWgV64rjTWjCIabCKjljMK?s=cl&p=i&mlu=4',
         images: ['/uniforme/colecao1.jpeg']
     },
     {
-        title: 'Kimonos Exclusivos',
-        description: 'Design e cortes premium para máxima performance. Modelagem moderna que dificulta a pegada do adversário sem restringir seus movimentos.',
-        link: 'https://chat.whatsapp.com/DOfgR3WfZMmLBo74PPFk4o?s=cl&p=i&mlu=4',
-        images: ['/uniforme/colecao2.jpeg', '/uniforme/colecao3.jpeg']
+        title: 'Kimono Oficial Constrictor Team – Série Competição',
+        description: 'A armadura definitiva para quem vive no topo do pódio. Design agressivo e trançado ultra resistente.',
+        link: 'https://chat.whatsapp.com/FfctFTc2xJc1agGyjMpRAB?s=cl&p=i&mlu=4',
+        images: ['/uniforme/colecao2.jpeg']
     },
     {
-        title: 'Linha Rash Guard',
-        description: 'Alta tecnologia de compressão para treinos No-Gi e Submission. Mantém a temperatura corporal e protege contra atritos no tatame.',
+        title: 'Kimono Oficial Old School – Azul Marinho',
+        description: 'O resgate da nossa tradição. Edição clássica com a essência purista do Jiu-Jitsu.',
+        link: 'https://chat.whatsapp.com/DOfgR3WfZMmLBo74PPFk4o?s=cl&p=i&mlu=4',
+        images: ['/uniforme/colecao3.jpeg']
+    },
+    {
+        title: 'Rashguards Oficiais Constrictor Team',
+        description: 'Alta tecnologia de compressão para treinos No-Gi. Consulte a tabela de medidas na galeria de imagens.',
         link: 'https://chat.whatsapp.com/EM0l7hWJZWv8zwJOVGVe9v?s=cl&p=i&mlu=4',
         images: [
             '/uniforme/rash/rash1.jpeg',
             '/uniforme/rash/rash2.jpeg',
             '/uniforme/rash/rash3.jpeg',
             '/uniforme/rash/rash4.jpeg',
+            '/uniforme/colecao4.jpeg'
         ]
     },
     {
-        title: 'Linha Kids',
-        description: 'Desenvolvido especialmente para os futuros campeões. Muito conforto e altíssima durabilidade para acompanhar a energia das crianças.',
+        title: 'RASHGUARD KIDS OFICIAL CONSTRICTOR TEAM',
+        description: 'O conforto e a proteção que as crianças precisam no tatame. Consulte a tabela de medidas na galeria.',
         link: 'https://chat.whatsapp.com/CHJhtgR8RqcIJvdM2yjE1t?s=cl&p=i&mlu=4',
         images: [
-            '/uniforme/colecao4.jpeg',
             '/uniforme/rash/kids/rashkids1.jpeg',
             '/uniforme/rash/kids/rashkids2.jpeg',
             '/uniforme/rash/kids/rashkids3.jpeg',
             '/uniforme/rash/kids/rashkids4.jpeg',
+            '/uniforme/colecao4.jpeg'
         ]
     },
     {
-        title: 'Séries Especiais',
-        description: 'Edições limitadas e equipamentos de alto rendimento. Acessórios e uniformes diferenciados para você representar a equipe com estilo.',
+        title: 'LANÇAMENTO OFICIAL – KIMONO SÉRIE KIDS EQUIPE CONSTRICTOR TEAM',
+        description: 'A armadura perfeita para os pequenos guerreiros. Qualidade de kimono adulto para formar os futuros campeões.',
         link: 'https://chat.whatsapp.com/Gs1uW3hprRE9Y7BMFA7yhE?s=cl&p=i&mlu=4',
         images: [
+            '/uniforme/colecao10.jpeg',
             '/uniforme/colecao9.jpeg',
             '/uniforme/colecao5.jpeg',
             '/uniforme/colecao6.jpeg',
