@@ -97,7 +97,7 @@ export default function HorariosPage() {
     return (
         <>
             {/* HERO COM IMAGEM */}
-            <section className="relative w-full min-h-[60vh] lg:min-h-[70vh] flex items-center justify-center overflow-hidden bg-black">
+            <section className="relative w-full min-h-[50vh] sm:min-h-[60vh] lg:min-h-[70vh] flex items-center justify-center overflow-hidden bg-black">
                 <Image
                     src="/grade.png"
                     alt="Horários de treino Constrictor Team"
@@ -110,16 +110,16 @@ export default function HorariosPage() {
                 <div className="relative z-10 text-center text-white px-6 md:px-10 max-w-6xl mx-auto">
                     <div className="mb-8" data-aos="fade-down">
                         <div className="w-20 h-1 bg-white mx-auto rounded-full mb-6"></div>
-                        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-3 tracking-tight leading-tight bg-gradient-to-r from-gray-300 via-white to-gray-400 bg-clip-text text-transparent">
+                        <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-extrabold mb-3 tracking-tight leading-tight bg-gradient-to-r from-gray-300 via-white to-gray-400 bg-clip-text text-transparent">
                             Horários de Treino
                         </h1>
-                        <p className="text-lg sm:text-xl text-gray-300 font-medium uppercase tracking-widest">
+                        <p className="text-sm sm:text-base md:text-xl text-gray-300 font-medium uppercase tracking-widest">
                             Constrictor Team
                         </p>
                     </div>
 
                     <p
-                        className="text-base sm:text-lg lg:text-xl text-gray-200 max-w-2xl mx-auto leading-relaxed mb-10"
+                        className="text-sm sm:text-base lg:text-xl text-gray-200 max-w-2xl mx-auto leading-relaxed mb-8 sm:mb-10"
                         data-aos="fade-up"
                         data-aos-delay="200"
                     >
@@ -127,7 +127,7 @@ export default function HorariosPage() {
                     </p>
 
                     <div
-                        className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 max-w-4xl mx-auto"
+                        className="grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-6 max-w-4xl mx-auto"
                         data-aos="fade-up"
                         data-aos-delay="400"
                     >
@@ -138,10 +138,10 @@ export default function HorariosPage() {
                             { icon: Play, value: '7', label: 'Dias/Semana' },
                         ].map(({ icon: Icon, value, label }) => (
                             <div key={label} className="text-center group">
-                                <div className="w-12 h-12 sm:w-14 sm:h-14 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-3 border border-white/5 group-hover:bg-white/20 transition-all duration-300">
-                                    <Icon className="w-6 h-6 text-white" />
+                                <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-3 border border-white/5 group-hover:bg-white/20 transition-all duration-300">
+                                    <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                                 </div>
-                                <p className="text-2xl sm:text-3xl font-bold text-white">{value}</p>
+                                <p className="text-xl sm:text-2xl md:text-3xl font-bold text-white">{value}</p>
                                 <p className="text-xs sm:text-sm text-gray-300">{label}</p>
                             </div>
                         ))}
@@ -152,7 +152,7 @@ export default function HorariosPage() {
             {/* GRADE DE HORÁRIOS */}
             <section
                 ref={scheduleRef}
-                className="relative py-16 lg:py-32 bg-black overflow-hidden"
+                className="relative py-10 sm:py-16 lg:py-32 bg-black overflow-hidden"
             >
                 {/* Imagem de Fundo Awwwards Style */}
                 <div className="absolute inset-0 z-0 pointer-events-none">
@@ -183,7 +183,7 @@ export default function HorariosPage() {
                         {scheduleData.map((dayGroup, index) => (
                             <div
                                 key={dayGroup.day}
-                                className="schedule-card bg-white/5 backdrop-blur-md rounded-2xl p-6 lg:p-8 border border-white/10 hover:border-white/30 shadow-2xl hover:shadow-white/5 transition-all duration-500"
+                                className="schedule-card bg-white/5 backdrop-blur-md rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 border border-white/10 hover:border-white/30 shadow-2xl hover:shadow-white/5 transition-all duration-500"
                                 data-aos="fade-up"
                                 data-aos-delay={index * 100}
                             >
@@ -191,7 +191,7 @@ export default function HorariosPage() {
                                     <div className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center">
                                         <Clock className="w-5 h-5 text-white" />
                                     </div>
-                                    <h2 className="text-xl lg:text-2xl font-bold text-white">
+                                    <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-white">
                                         {dayGroup.day}
                                     </h2>
                                 </div>
@@ -200,12 +200,12 @@ export default function HorariosPage() {
                                     {dayGroup.classes.map((classe, classIndex) => (
                                         <li
                                             key={classe.time + classe.activity}
-                                            className="flex justify-between items-start gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-all duration-300 border border-transparent hover:border-white/20"
+                                            className="flex justify-between items-start gap-3 sm:gap-4 p-3 sm:p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-all duration-300 border border-transparent hover:border-white/20"
                                             data-aos="fade-in"
                                             data-aos-delay={(index * 100) + (classIndex * 50)}
                                         >
                                             <div className="flex-1">
-                                                <span className="block text-lg font-bold text-white mb-1">
+                                                <span className="block text-base sm:text-lg font-bold text-white mb-1">
                                                     {classe.time}
                                                 </span>
                                                 <span
@@ -249,8 +249,8 @@ export default function HorariosPage() {
 
                     {/* Informações adicionais - AGORA ABAIXO DAS GRADES */}
                     <div className="max-w-4xl mx-auto" data-aos="fade-up">
-                        <div className="bg-white/5 backdrop-blur-md rounded-2xl p-6 lg:p-8 border border-white/10">
-                            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                        <div className="bg-white/5 backdrop-blur-md rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 border border-white/10">
+                            <div className="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6 text-center">
                                 {[
                                     {
                                         icon: Users,

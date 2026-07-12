@@ -75,7 +75,7 @@ const ProductGallery = ({ images, title }: { images: string[], title: string }) 
 
     if (images.length === 1) {
         return (
-            <div className="w-full aspect-[3/4] md:aspect-[4/5] relative rounded-2xl overflow-hidden bg-zinc-900 border border-white/10 shadow-2xl">
+            <div className="w-full aspect-[4/5] relative rounded-xl sm:rounded-2xl overflow-hidden bg-zinc-900 border border-white/10 shadow-2xl">
                 <Image src={images[0]} alt={title} fill className="object-cover object-top" />
             </div>
         )
@@ -83,7 +83,7 @@ const ProductGallery = ({ images, title }: { images: string[], title: string }) 
 
     return (
         <div className="flex flex-col gap-4 w-full">
-            <div className="w-full aspect-[3/4] md:aspect-[4/5] relative rounded-2xl overflow-hidden bg-zinc-900 border border-white/10 shadow-2xl">
+            <div className="w-full aspect-[4/5] relative rounded-xl sm:rounded-2xl overflow-hidden bg-zinc-900 border border-white/10 shadow-2xl">
                 <Image 
                     src={images[activeImage]} 
                     alt={`${title} - Imagem Principal`} 
@@ -97,7 +97,7 @@ const ProductGallery = ({ images, title }: { images: string[], title: string }) 
                     <button 
                         key={idx}
                         onClick={() => setActiveImage(idx)}
-                        className={`relative w-20 h-24 md:w-24 md:h-28 shrink-0 rounded-xl overflow-hidden transition-all duration-300
+                        className={`relative w-16 h-20 sm:w-20 sm:h-24 md:w-24 md:h-28 shrink-0 rounded-lg sm:rounded-xl overflow-hidden transition-all duration-300
                             ${activeImage === idx 
                                 ? 'border-2 border-yellow-500 opacity-100 shadow-[0_0_15px_rgba(234,179,8,0.3)]' 
                                 : 'border border-white/10 opacity-50 hover:opacity-100'
@@ -116,23 +116,23 @@ export default function LojaKimonosPage() {
         <div className="min-h-screen bg-black text-white selection:bg-yellow-500 selection:text-black">
             
             {/* Header / Hero da Loja */}
-            <section className="pt-32 pb-16 px-6 lg:px-12 max-w-[1400px] mx-auto text-center border-b border-white/10 mb-16">
+            <section className="pt-24 pb-10 md:pt-32 md:pb-16 px-4 sm:px-6 lg:px-12 max-w-[1400px] mx-auto text-center border-b border-white/10 mb-10 md:mb-16">
                 <span className="text-yellow-500 font-bold tracking-widest uppercase text-sm mb-4 block">
                     Loja Oficial
                 </span>
-                <h1 className="text-4xl md:text-6xl lg:text-7xl font-black uppercase tracking-tighter leading-[0.9] mb-6">
+                <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black uppercase tracking-tighter leading-[0.9] mb-4 sm:mb-6">
                     KIMONOS E <br />
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500">
                         RASH GUARD
                     </span>
                 </h1>
-                <p className="text-gray-400 text-lg md:text-xl font-medium max-w-2xl mx-auto">
-                    A armadura oficial da nossa equipe. Escolha seu modelo, confira os detalhes na galeria e faça seu pedido de forma rápida e direta via WhatsApp.
+                <p className="text-gray-400 text-sm sm:text-base md:text-lg lg:text-xl font-medium max-w-2xl mx-auto">
+                    A armadura oficial da nossa equipe. Escolha seu modelo, confira os detalhes na galeria e faça seu pedido via WhatsApp.
                 </p>
             </section>
 
             {/* Listagem de Produtos E-commerce Style */}
-            <section className="px-4 sm:px-6 lg:px-12 pb-32 max-w-[1400px] mx-auto flex flex-col gap-24 lg:gap-32">
+            <section className="px-4 sm:px-6 lg:px-12 pb-20 md:pb-32 max-w-[1400px] mx-auto flex flex-col gap-14 sm:gap-20 lg:gap-32">
                 {colecoes.map((produto, index) => (
                     <div 
                         key={index} 
@@ -146,24 +146,24 @@ export default function LojaKimonosPage() {
                         {/* Direita: Informações do Produto (Estilo E-commerce) */}
                         <div className="w-full lg:w-1/2 flex flex-col pt-4 lg:sticky lg:top-32">
                             
-                            <div className="flex items-center gap-3 mb-4">
-                                <span className="bg-white/10 text-white border border-white/20 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">
+                            <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+                                <span className="bg-white/10 text-white border border-white/20 text-[10px] sm:text-xs font-bold uppercase tracking-wider px-2 sm:px-3 py-1 rounded-full">
                                     Oficial
                                 </span>
-                                <span className="text-yellow-500 text-sm font-bold uppercase tracking-widest">
+                                <span className="text-yellow-500 text-xs sm:text-sm font-bold uppercase tracking-widest">
                                     Disponível para Encomenda
                                 </span>
                             </div>
 
-                            <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter mb-6 text-white">
+                            <h2 className="text-2xl sm:text-3xl md:text-5xl font-black uppercase tracking-tighter mb-4 sm:mb-6 text-white">
                                 {produto.title}
                             </h2>
                             
-                            <p className="text-gray-300 text-lg leading-relaxed mb-8">
+                            <p className="text-gray-300 text-base sm:text-lg leading-relaxed mb-6 sm:mb-8">
                                 {produto.description}
                             </p>
 
-                            <div className="flex flex-col gap-4 mb-10">
+                            <div className="flex flex-col gap-3 sm:gap-4 mb-6 sm:mb-10">
                                 <div className="flex items-center gap-4 text-gray-400">
                                     <ShieldCheck className="text-yellow-500" size={24} />
                                     <span>Produto Oficial Constrictor Team</span>
@@ -178,11 +178,11 @@ export default function LojaKimonosPage() {
                             <Link 
                                 href={produto.link} 
                                 target="_blank" 
-                                className="group relative w-full flex justify-center items-center gap-3 bg-yellow-500 text-black font-black uppercase tracking-widest px-8 py-5 md:py-6 rounded-2xl overflow-hidden hover:scale-[1.02] transition-transform duration-300 shadow-[0_10px_40px_rgba(234,179,8,0.2)]"
+                                className="group relative w-full flex justify-center items-center gap-3 bg-yellow-500 text-black font-black uppercase tracking-wider sm:tracking-widest px-6 py-4 sm:px-8 sm:py-5 md:py-6 rounded-xl sm:rounded-2xl overflow-hidden active:scale-[0.98] md:hover:scale-[1.02] transition-transform duration-300 shadow-[0_10px_40px_rgba(234,179,8,0.2)]"
                             >
                                 <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
                                 <ShoppingBag size={24} className="relative z-10" />
-                                <span className="relative z-10 text-lg">Comprar Agora</span>
+                                <span className="relative z-10 text-base sm:text-lg">Comprar Agora</span>
                             </Link>
 
                             <p className="text-center text-xs text-gray-500 mt-4">

@@ -30,7 +30,7 @@ export default function PromoModal() {
     if (!showModal) return null
 
     return (
-        <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 sm:p-6 md:p-12">
+        <div className="fixed inset-0 z-[9999] flex items-end sm:items-center justify-center p-0 sm:p-6 md:p-12">
 
             {/* Backdrop com Blur Profundo */}
             <div
@@ -39,15 +39,15 @@ export default function PromoModal() {
             ></div>
 
             {/* Container Principal do Modal */}
-            <div className="relative w-full max-w-6xl h-[85vh] md:h-[80vh] flex flex-col md:flex-row bg-zinc-950 rounded-[2rem] shadow-[0_0_80px_rgba(0,0,0,0.6)] overflow-hidden border border-white/10 animate-in zoom-in-95 duration-500">
+            <div className="relative w-full sm:max-w-6xl h-[75vh] sm:h-[85vh] md:h-[80vh] flex flex-col md:flex-row bg-zinc-950 rounded-t-[2rem] sm:rounded-[2rem] shadow-[0_0_80px_rgba(0,0,0,0.6)] overflow-hidden border border-white/10 animate-in slide-in-from-bottom sm:zoom-in-95 duration-500">
 
                 {/* Botão Fechar - Flutuante */}
                 <button
                     onClick={handleCloseModal}
-                    className="absolute top-4 right-4 md:top-6 md:right-6 z-[60] bg-black/40 hover:bg-yellow-500 backdrop-blur-md text-white hover:text-black w-12 h-12 flex items-center justify-center rounded-full transition-all duration-300 shadow-2xl group/btn border border-white/10 hover:border-transparent"
+                    className="absolute top-3 right-3 sm:top-4 sm:right-4 md:top-6 md:right-6 z-[60] bg-black/60 hover:bg-yellow-500 backdrop-blur-md text-white hover:text-black w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full transition-all duration-300 shadow-2xl group/btn border border-white/10 hover:border-transparent"
                     aria-label="Fechar"
                 >
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="group-hover/btn:rotate-90 transition-transform duration-300"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="sm:w-6 sm:h-6 group-hover/btn:rotate-90 transition-transform duration-300"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>
                 </button>
 
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 pointer-events-none hidden md:flex flex-col items-center">
@@ -79,7 +79,7 @@ export default function PromoModal() {
                         <span className="text-yellow-500 font-bold text-[10px] md:text-xs tracking-widest uppercase mb-1 drop-shadow-md">
                             Até 05/07/2026
                         </span>
-                        <h2 className="text-xl md:text-3xl font-black text-white uppercase leading-tight mb-2 drop-shadow-lg">
+                        <h2 className="text-lg sm:text-xl md:text-3xl font-black text-white uppercase leading-tight mb-2 drop-shadow-lg">
                             Camisas<br />Oficiais
                         </h2>
                         <p className="text-gray-300 text-xs md:text-sm font-medium mb-4 leading-relaxed hidden sm:block">

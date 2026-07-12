@@ -38,7 +38,7 @@ export default function Hero() {
 
 
             {/* PARALLAX 1: VÍDEO DE FUNDO */}
-            <section className="relative h-screen flex items-center justify-center text-center overflow-hidden">
+            <section className="relative min-h-[100svh] flex items-center justify-center text-center overflow-hidden">
                 <video
                     className="absolute top-0 left-0 w-full h-full object-cover"
                     src="/cobra.mp4"
@@ -56,31 +56,31 @@ export default function Hero() {
                             width={400}
                             height={130}
                             priority
-                            className="drop-shadow-[0_0_25px_rgba(255,255,255,0.4)] brightness-110"
+                            className="drop-shadow-[0_0_25px_rgba(255,255,255,0.4)] brightness-110 max-w-[220px] sm:max-w-[300px] md:max-w-none w-auto h-auto"
                         />
-                        <div className="w-24 h-[2px] bg-white mx-auto mt-4 opacity-60"></div>
+                        <div className="w-16 sm:w-24 h-[2px] bg-white mx-auto mt-4 opacity-60"></div>
                     </div>
                 </div>
             </section>
 
             {/* PARALLAX 2 */}
             <section
-                className={`${isIOS ? 'relative h-[85vh]' : 'relative h-[85vh] bg-fixed'} flex items-center justify-center bg-cover bg-center`}
+                className={`${isIOS ? 'relative min-h-[55vh] md:min-h-[85vh]' : 'relative min-h-[55vh] md:min-h-[85vh] bg-fixed'} flex items-center justify-center bg-cover bg-center`}
                 style={{ backgroundImage: 'url(/ataide.jpg)' }}
             >
                 <div className="absolute inset-0 bg-black/60"></div>
                 <div className="relative z-10 text-center max-w-2xl px-6" data-aos="fade-up">
-                    <h2 className="text-3xl sm:text-4xl font-bold mb-4 tracking-wide uppercase">Um Legado de Excelência</h2>
-                    <p className="text-lg opacity-90 leading-relaxed text-gray-200">
+                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 tracking-wide uppercase">Um Legado de Excelência</h2>
+                    <p className="text-base sm:text-lg opacity-90 leading-relaxed text-gray-200">
                         <strong>Mestre Ataíde Ludgero Jr.</strong> — Fundador e líder da Constrictor Team, é faixa preta 6º grau de Jiu-Jitsu.
                     </p>
                 </div>
             </section>
 
             {/* SEÇÃO 3 */}
-            <section className="py-24 bg-[#111] text-gray-100 text-center px-6">
+            <section className="py-14 sm:py-20 md:py-24 bg-[#111] text-gray-100 text-center px-6">
                 <div className="max-w-3xl mx-auto space-y-6" data-aos="fade-up">
-                    <h2 className="text-3xl font-extrabold uppercase tracking-widest text-white">Transformando vidas</h2>
+                    <h2 className="text-2xl sm:text-3xl font-extrabold uppercase tracking-widest text-white">Transformando vidas</h2>
                     <p className="text-lg leading-relaxed text-gray-300">
                         No Constrictor Team – Instituto Vida Suave, acreditamos que o Jiu-Jitsu é uma filosofia de vida.
                     </p>
@@ -89,12 +89,12 @@ export default function Hero() {
 
             {/* PARALLAX 3 */}
             <section
-                className={`${isIOS ? 'relative h-[85vh]' : 'relative h-[85vh] bg-fixed'} flex items-center justify-center bg-cover bg-center`}
+                className={`${isIOS ? 'relative min-h-[55vh] md:min-h-[85vh]' : 'relative min-h-[55vh] md:min-h-[85vh] bg-fixed'} flex items-center justify-center bg-cover bg-center`}
                 style={{ backgroundImage: 'url(/backg.png)' }}
             >
                 <div className="absolute inset-0 bg-black/60"></div>
                 <div className="relative z-10 text-center max-w-2xl px-6" data-aos="fade-up">
-                    <h2 className="text-3xl sm:text-4xl font-bold mb-4 uppercase tracking-wide">Projeto Social</h2>
+                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 uppercase tracking-wide">Projeto Social</h2>
                     <p className="text-lg opacity-90 leading-relaxed text-gray-200">
                         Nossa missão é transformar vidas através do Jiu-Jitsu.
                     </p>
@@ -116,10 +116,10 @@ export default function Hero() {
                 
                 <div className="relative z-10 px-6 max-w-7xl mx-auto flex flex-col items-center mb-12" data-aos="fade-up">
                     <span className="text-yellow-500 font-bold tracking-widest uppercase text-sm mb-4">Loja Oficial</span>
-                    <h2 className="text-3xl sm:text-5xl font-black uppercase tracking-tighter text-white mb-6 text-center">
+                    <h2 className="text-2xl sm:text-3xl md:text-5xl font-black uppercase tracking-tighter text-white mb-6 text-center">
                         Vista a Nossa Armadura
                     </h2>
-                    <p className="text-gray-400 text-lg text-center max-w-2xl">
+                    <p className="text-gray-400 text-sm sm:text-base md:text-lg text-center max-w-2xl">
                         Kimonos exclusivos, linhas de Rash Guard e edições limitadas. Represente a Constrictor Team no tatame e no dia a dia.
                     </p>
                 </div>
@@ -129,7 +129,7 @@ export default function Hero() {
                     <div className="flex w-max animate-marquee space-x-4">
                         {/* Repeat images array twice to create seamless loop */}
                         {[...carouselImages, ...carouselImages].map((img, i) => (
-                            <div key={i} className="relative w-[280px] h-[350px] shrink-0 rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-zinc-900 transition-all duration-300 group-hover:opacity-60 hover:!opacity-100">
+                            <div key={i} className="relative w-[200px] h-[260px] sm:w-[250px] sm:h-[320px] md:w-[280px] md:h-[350px] shrink-0 rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-zinc-900 transition-all duration-300">
                                 <Image src={img} alt="Uniforme Constrictor" fill className="object-cover object-top" sizes="280px" />
                             </div>
                         ))}
@@ -137,7 +137,7 @@ export default function Hero() {
                 </div>
 
                 <div className="relative z-10 mt-12 flex justify-center" data-aos="fade-up">
-                    <Link href="/kimonos" className="inline-flex items-center justify-center gap-3 px-10 py-5 bg-white text-black font-black uppercase tracking-widest rounded-full hover:bg-yellow-500 hover:scale-105 transition-all duration-300 shadow-[0_0_30px_rgba(255,255,255,0.2)]">
+                    <Link href="/kimonos" className="inline-flex items-center justify-center gap-3 px-8 py-4 md:px-10 md:py-5 text-sm md:text-base bg-white text-black font-black uppercase tracking-widest rounded-full hover:bg-yellow-500 hover:scale-105 transition-all duration-300 shadow-[0_0_30px_rgba(255,255,255,0.2)]">
                         <ShoppingBag size={22} />
                         Acessar a Loja
                     </Link>
