@@ -29,6 +29,7 @@ export default function Header() {
         { name: 'Graduação', href: '/graduacao' },
         { name: 'Seminários', href: '/seminario' },
         { name: 'Galeria', href: '/galeria' },
+        { name: 'Kimonos', href: '/kimonos' },
         { name: 'Avisos', href: '/avisos' },
         { name: 'Nosso CT', href: '/encontre' },
     ]

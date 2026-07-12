@@ -18,11 +18,11 @@ const scheduleData = [
         classes: [
             { time: '11:30 - 12:40', activity: 'LUTA LIVRE', instructor: 'MESTRE ATAIDE' },
             { time: '12:40 - 13:40', activity: 'JIU JITSU', instructor: 'MESTRE ATAIDE' },
-            { time: '19:30 - 21:00', activity: 'JIU JITSU', instructor: 'MESTRE BRENO' },
+            { time: '19:30 - 21:00', activity: 'JIU JITSU', instructor: 'BRENO' },
         ],
     },
     {
-        day: 'Segunda, Quarta e Sexta (Kids)',
+        day: 'Segunda, Quarta e Sexta (Treino Kids)',
         classes: [
             { time: '18:30 - 19:30', activity: 'JIU JITSU', instructor: 'BRENO' },
         ],
@@ -30,8 +30,8 @@ const scheduleData = [
     {
         day: 'Terça e Quinta',
         classes: [
-            { time: '6:45 - 7:45', activity: 'JIU JITSU', instructor: 'FELIPE FERRUGEM' },
-            { time: '12:30 - 13:30', activity: 'MUAY THAI', instructor: 'TREINADOR TOCO' },
+            { time: '12:30 - 13:30', activity: 'JIU JITSU', instructor: 'RODRIGO AMARAL (CARRANCA)' },
+            { time: '13:30 - 14:30', activity: 'MUAY THAI', instructor: 'YGOR MORATO' },
             { time: '19:30 - 21:00', activity: 'JIU JITSU', instructor: 'CARRANCA' },
         ],
     },
@@ -109,11 +109,11 @@ export default function HorariosPage() {
 
                 <div className="relative z-10 text-center text-white px-6 md:px-10 max-w-6xl mx-auto">
                     <div className="mb-8" data-aos="fade-down">
-                        <div className="w-20 h-1 bg-yellow-500 mx-auto rounded-full mb-6"></div>
-                        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-3 tracking-tight leading-tight bg-gradient-to-r from-yellow-400 via-white to-yellow-500 bg-clip-text text-transparent">
+                        <div className="w-20 h-1 bg-white mx-auto rounded-full mb-6"></div>
+                        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-3 tracking-tight leading-tight bg-gradient-to-r from-gray-300 via-white to-gray-400 bg-clip-text text-transparent">
                             Horários de Treino
                         </h1>
-                        <p className="text-lg sm:text-xl text-yellow-400 font-medium uppercase tracking-widest">
+                        <p className="text-lg sm:text-xl text-gray-300 font-medium uppercase tracking-widest">
                             Constrictor Team
                         </p>
                     </div>
@@ -123,7 +123,7 @@ export default function HorariosPage() {
                         data-aos="fade-up"
                         data-aos-delay="200"
                     >
-                        Confira nossa grade completa de treinos. Aulas para todos os níveis — do iniciante ao faixa preta, incluindo turmas kids e treinos Open Mat.
+                        Confira nossa grade completa de treinos. Aulas para todos os níveis do iniciante ao faixa preta, incluindo turmas kids e treinos Open Mat.
                     </p>
 
                     <div
@@ -137,9 +137,9 @@ export default function HorariosPage() {
                             { icon: Target, value: '5', label: 'Modalidades' },
                             { icon: Play, value: '7', label: 'Dias/Semana' },
                         ].map(({ icon: Icon, value, label }) => (
-                            <div key={label} className="text-center">
-                                <div className="w-12 h-12 sm:w-14 sm:h-14 bg-yellow-500/20 rounded-full flex items-center justify-center mx-auto mb-3">
-                                    <Icon className="w-6 h-6 text-yellow-500" />
+                            <div key={label} className="text-center group">
+                                <div className="w-12 h-12 sm:w-14 sm:h-14 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-3 border border-white/5 group-hover:bg-white/20 transition-all duration-300">
+                                    <Icon className="w-6 h-6 text-white" />
                                 </div>
                                 <p className="text-2xl sm:text-3xl font-bold text-white">{value}</p>
                                 <p className="text-xs sm:text-sm text-gray-300">{label}</p>
@@ -152,21 +152,25 @@ export default function HorariosPage() {
             {/* GRADE DE HORÁRIOS */}
             <section
                 ref={scheduleRef}
-                className="relative py-16 lg:py-24 bg-gradient-to-br from-gray-900 via-black to-gray-900"
+                className="relative py-16 lg:py-32 bg-black overflow-hidden"
             >
-                <div className="absolute inset-0 opacity-10 pointer-events-none">
-                    <div
-                        className="absolute inset-0"
-                        style={{
-                            backgroundImage: `radial-gradient(circle at 25px 25px, rgba(255,255,255,0.3) 2px, transparent 0)`,
-                            backgroundSize: '50px 50px',
-                        }}
-                    ></div>
+                {/* Imagem de Fundo Awwwards Style */}
+                <div className="absolute inset-0 z-0 pointer-events-none">
+                    <Image
+                        src="/ataide.jpg"
+                        alt="Background Mestre Ataide"
+                        fill
+                        className="object-cover opacity-40 grayscale mix-blend-screen scale-105"
+                    />
+                    {/* Gradientes para mesclar a imagem com o fundo preto sem bordas duras */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-black/20"></div>
+                    <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black"></div>
+                    <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black"></div>
                 </div>
 
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                     <div className="text-center mb-12 lg:mb-16" data-aos="fade-up">
-                        <h2 className="text-3xl md:text-4xl font-extrabold mb-3 bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">
+                        <h2 className="text-3xl md:text-4xl font-extrabold mb-3 bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
                             Grade de Horários
                         </h2>
                         <p className="text-gray-400 max-w-2xl mx-auto text-lg">
@@ -179,13 +183,13 @@ export default function HorariosPage() {
                         {scheduleData.map((dayGroup, index) => (
                             <div
                                 key={dayGroup.day}
-                                className="schedule-card bg-gray-800/60 backdrop-blur-sm rounded-2xl p-6 lg:p-8 border border-gray-700/50 hover:border-yellow-500/50 shadow-lg hover:shadow-yellow-500/10 transition-all duration-500"
+                                className="schedule-card bg-white/5 backdrop-blur-md rounded-2xl p-6 lg:p-8 border border-white/10 hover:border-white/30 shadow-2xl hover:shadow-white/5 transition-all duration-500"
                                 data-aos="fade-up"
                                 data-aos-delay={index * 100}
                             >
-                                <div className="flex items-center gap-3 mb-6 pb-4 border-b border-gray-700/50">
-                                    <div className="w-10 h-10 bg-yellow-500/20 rounded-full flex items-center justify-center">
-                                        <Clock className="w-5 h-5 text-yellow-500" />
+                                <div className="flex items-center gap-3 mb-6 pb-4 border-b border-white/10">
+                                    <div className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center">
+                                        <Clock className="w-5 h-5 text-white" />
                                     </div>
                                     <h2 className="text-xl lg:text-2xl font-bold text-white">
                                         {dayGroup.day}
@@ -196,7 +200,7 @@ export default function HorariosPage() {
                                     {dayGroup.classes.map((classe, classIndex) => (
                                         <li
                                             key={classe.time + classe.activity}
-                                            className="flex justify-between items-start gap-4 p-4 rounded-xl bg-gradient-to-r from-gray-700/50 to-gray-800/50 hover:from-yellow-500/10 hover:to-gray-800/50 transition-all duration-300 border border-gray-600/50 hover:border-yellow-500/30"
+                                            className="flex justify-between items-start gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-all duration-300 border border-transparent hover:border-white/20"
                                             data-aos="fade-in"
                                             data-aos-delay={(index * 100) + (classIndex * 50)}
                                         >
@@ -205,16 +209,10 @@ export default function HorariosPage() {
                                                     {classe.time}
                                                 </span>
                                                 <span
-                                                    className={`inline-block px-3 py-1 rounded-full text-xs font-semibold
-                                                        ${classe.activity === 'JIU JITSU'
-                                                            ? 'bg-blue-500/20 text-blue-300 border border-blue-500/30'
-                                                            : classe.activity === 'LUTA LIVRE'
-                                                                ? 'bg-green-500/20 text-green-300 border border-green-500/30'
-                                                                : classe.activity === 'MUAY THAI'
-                                                                    ? 'bg-red-500/20 text-red-300 border border-red-500/30'
-                                                                    : classe.activity === 'YOGA'
-                                                                        ? 'bg-purple-500/20 text-purple-300 border border-purple-500/30'
-                                                                        : 'bg-yellow-500/20 text-yellow-300 border border-yellow-500/30'
+                                                    className={`inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider
+                                                        ${classe.activity.includes('JIU JITSU')
+                                                            ? 'bg-white text-black'
+                                                            : 'bg-transparent text-white border border-white/30'
                                                         }`}
                                                 >
                                                     {classe.activity}
@@ -227,7 +225,7 @@ export default function HorariosPage() {
                                                         <p className="font-semibold text-white text-sm lg:text-base">
                                                             {classe.instructor}
                                                         </p>
-                                                        <p className="text-xs text-gray-400 mt-1">
+                                                        <p className="text-xs text-gray-400 mt-1 uppercase tracking-widest font-medium">
                                                             Instrutor
                                                         </p>
                                                     </div>
@@ -236,7 +234,7 @@ export default function HorariosPage() {
                                                         <p className="font-semibold text-gray-400 text-sm lg:text-base">
                                                             Livre
                                                         </p>
-                                                        <p className="text-xs text-gray-500 mt-1">
+                                                        <p className="text-xs text-gray-500 mt-1 uppercase tracking-widest font-medium">
                                                             Prática
                                                         </p>
                                                     </div>
@@ -251,7 +249,7 @@ export default function HorariosPage() {
 
                     {/* Informações adicionais - AGORA ABAIXO DAS GRADES */}
                     <div className="max-w-4xl mx-auto" data-aos="fade-up">
-                        <div className="bg-gradient-to-r from-yellow-500/10 to-yellow-600/10 backdrop-blur-sm rounded-2xl p-6 lg:p-8 border border-yellow-500/30">
+                        <div className="bg-white/5 backdrop-blur-md rounded-2xl p-6 lg:p-8 border border-white/10">
                             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
                                 {[
                                     {
@@ -275,9 +273,9 @@ export default function HorariosPage() {
                                         desc: 'Agende sua primeira aula',
                                     },
                                 ].map(({ icon: Icon, title, desc }) => (
-                                    <div key={title}>
-                                        <div className="w-12 h-12 bg-yellow-500/20 rounded-full flex items-center justify-center mx-auto mb-3">
-                                            <Icon className="w-6 h-6 text-yellow-500" />
+                                    <div key={title} className="group cursor-default">
+                                        <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-white/20 transition-all duration-300">
+                                            <Icon className="w-6 h-6 text-white" />
                                         </div>
                                         <h4 className="font-semibold text-white mb-1">{title}</h4>
                                         <p className="text-sm text-gray-400">{desc}</p>

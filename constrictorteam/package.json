@@ -28,7 +28,7 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-scroll-parallax": "^3.5.0",
-    "swiper": "^11.2.8",
+    "swiper": "^14.0.5",
     "tailwind-merge": "^3.3.0"
   },
   "devDependencies": {
