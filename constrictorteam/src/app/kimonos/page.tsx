@@ -2,30 +2,31 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { MessageCircle } from 'lucide-react'
+import { useState } from 'react'
+import { ShoppingBag, MessageCircle, ShieldCheck, Truck } from 'lucide-react'
 
 const colecoes = [
     {
         title: 'Camisas Oficiais',
-        description: 'Garanta a sua e fortaleça a identidade da nossa equipe! Encomendas abertas até 05/07/2026.',
+        description: 'Garanta a sua e fortaleça a identidade da nossa equipe! Encomendas abertas até 05/07/2026. Feitas com tecido premium.',
         link: 'https://chat.whatsapp.com/EdqlulmAqXs30J6rawjA9I?s=cl&p=i&mlu=4',
         images: ['/uniforme/novacolecao.jpeg']
     },
     {
         title: 'Kimono Constrictor',
-        description: 'A armadura tradicional da nossa equipe.',
+        description: 'A armadura tradicional da nossa equipe. Trançado super resistente, ideal para treinos diários intensos e competições de alto nível.',
         link: 'https://chat.whatsapp.com/KWgV64rjTWjCIabCKjljMK?s=cl&p=i&mlu=4',
         images: ['/uniforme/colecao1.jpeg']
     },
     {
         title: 'Kimonos Exclusivos',
-        description: 'Design e cortes premium para máxima performance.',
+        description: 'Design e cortes premium para máxima performance. Modelagem moderna que dificulta a pegada do adversário sem restringir seus movimentos.',
         link: 'https://chat.whatsapp.com/DOfgR3WfZMmLBo74PPFk4o?s=cl&p=i&mlu=4',
         images: ['/uniforme/colecao2.jpeg', '/uniforme/colecao3.jpeg']
     },
     {
         title: 'Linha Rash Guard',
-        description: 'Alta tecnologia de compressão para treinos No-Gi e Submission.',
+        description: 'Alta tecnologia de compressão para treinos No-Gi e Submission. Mantém a temperatura corporal e protege contra atritos no tatame.',
         link: 'https://chat.whatsapp.com/EM0l7hWJZWv8zwJOVGVe9v?s=cl&p=i&mlu=4',
         images: [
             '/uniforme/rash/rash1.jpeg',
@@ -36,7 +37,7 @@ const colecoes = [
     },
     {
         title: 'Linha Kids',
-        description: 'Desenvolvido para os futuros campeões. Conforto e durabilidade.',
+        description: 'Desenvolvido especialmente para os futuros campeões. Muito conforto e altíssima durabilidade para acompanhar a energia das crianças.',
         link: 'https://chat.whatsapp.com/CHJhtgR8RqcIJvdM2yjE1t?s=cl&p=i&mlu=4',
         images: [
             '/uniforme/colecao4.jpeg',
@@ -48,7 +49,7 @@ const colecoes = [
     },
     {
         title: 'Séries Especiais',
-        description: 'Edições limitadas e equipamentos de alto rendimento.',
+        description: 'Edições limitadas e equipamentos de alto rendimento. Acessórios e uniformes diferenciados para você representar a equipe com estilo.',
         link: 'https://chat.whatsapp.com/Gs1uW3hprRE9Y7BMFA7yhE?s=cl&p=i&mlu=4',
         images: [
             '/uniforme/colecao9.jpeg',
@@ -60,116 +61,141 @@ const colecoes = [
     }
 ]
 
-const renderImages = (images: string[]) => {
+// Componente Interativo de Galeria de Produto
+const ProductGallery = ({ images, title }: { images: string[], title: string }) => {
+    const [activeImage, setActiveImage] = useState(0)
+
     if (images.length === 1) {
         return (
-            <div className="w-full h-[50vh] md:h-[65vh] relative">
-                <Image src={images[0]} alt="Uniforme" fill className="object-cover object-top" />
+            <div className="w-full aspect-[3/4] md:aspect-[4/5] relative rounded-2xl overflow-hidden bg-zinc-900 border border-white/10 shadow-2xl">
+                <Image src={images[0]} alt={title} fill className="object-cover object-top" />
             </div>
         )
     }
-    if (images.length === 2) {
-        return (
-            <div className="w-full h-[50vh] md:h-[65vh] flex gap-1">
-                {images.map((img, i) => (
-                    <div key={i} className="relative flex-1 h-full">
-                        <Image src={img} alt="Uniforme" fill className="object-cover object-top" />
-                    </div>
+
+    return (
+        <div className="flex flex-col gap-4 w-full">
+            <div className="w-full aspect-[3/4] md:aspect-[4/5] relative rounded-2xl overflow-hidden bg-zinc-900 border border-white/10 shadow-2xl">
+                <Image 
+                    src={images[activeImage]} 
+                    alt={`${title} - Imagem Principal`} 
+                    fill 
+                    className="object-cover object-top transition-opacity duration-500" 
+                    priority
+                />
+            </div>
+            <div className="flex gap-3 overflow-x-auto pb-2 hide-scroll-bar">
+                {images.map((img, idx) => (
+                    <button 
+                        key={idx}
+                        onClick={() => setActiveImage(idx)}
+                        className={`relative w-20 h-24 md:w-24 md:h-28 shrink-0 rounded-xl overflow-hidden transition-all duration-300
+                            ${activeImage === idx 
+                                ? 'border-2 border-yellow-500 opacity-100 shadow-[0_0_15px_rgba(234,179,8,0.3)]' 
+                                : 'border border-white/10 opacity-50 hover:opacity-100'
+                            }`}
+                    >
+                        <Image src={img} alt={`${title} Miniatura ${idx + 1}`} fill className="object-cover object-top" />
+                    </button>
                 ))}
             </div>
-        )
-    }
-    if (images.length === 4) {
-        return (
-            <div className="w-full h-[50vh] md:h-[65vh] flex gap-1">
-                {images.map((img, i) => (
-                    <div key={i} className="relative flex-1 h-full">
-                        <Image src={img} alt="Uniforme" fill className="object-cover object-top" />
-                    </div>
-                ))}
-            </div>
-        )
-    }
-    if (images.length >= 5) {
-        return (
-            <div className="w-full h-[50vh] md:h-[65vh] flex gap-1">
-                {/* Imagem Principal */}
-                <div className="relative flex-[2] h-full">
-                    <Image src={images[0]} alt="Uniforme Principal" fill className="object-cover object-top" />
-                </div>
-                {/* Coluna 2 */}
-                <div className="flex-1 flex flex-col gap-1 h-full">
-                    <div className="relative flex-1">
-                        <Image src={images[1]} alt="Uniforme 2" fill className="object-cover object-top" />
-                    </div>
-                    <div className="relative flex-1">
-                        <Image src={images[2]} alt="Uniforme 3" fill className="object-cover object-top" />
-                    </div>
-                </div>
-                {/* Coluna 3 (Escondida no mobile se ficar muito apertado, mas flexível no desktop) */}
-                <div className="flex-1 hidden sm:flex flex-col gap-1 h-full">
-                    <div className="relative flex-1">
-                        <Image src={images[3]} alt="Uniforme 4" fill className="object-cover object-top" />
-                    </div>
-                    <div className="relative flex-1">
-                        <Image src={images[4]} alt="Uniforme 5" fill className="object-cover object-top" />
-                    </div>
-                </div>
-            </div>
-        )
-    }
+        </div>
+    )
 }
 
-export default function KimonosPage() {
+export default function LojaKimonosPage() {
     return (
-        <div className="min-h-screen bg-black text-white selection:bg-white selection:text-black">
+        <div className="min-h-screen bg-black text-white selection:bg-yellow-500 selection:text-black">
             
-            {/* Header Section */}
-            <section className="pt-32 pb-16 px-6 lg:px-12 max-w-[1400px] mx-auto text-center">
-                <h1 className="text-5xl md:text-7xl lg:text-8xl font-black uppercase tracking-tighter leading-[0.9] mb-6">
-                    Kimonos <br />
+            {/* Header / Hero da Loja */}
+            <section className="pt-32 pb-16 px-6 lg:px-12 max-w-[1400px] mx-auto text-center border-b border-white/10 mb-16">
+                <span className="text-yellow-500 font-bold tracking-widest uppercase text-sm mb-4 block">
+                    Loja Oficial
+                </span>
+                <h1 className="text-4xl md:text-6xl lg:text-7xl font-black uppercase tracking-tighter leading-[0.9] mb-6">
+                    KIMONOS E <br />
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500">
-                        & Uniformes
+                        RASH GUARD
                     </span>
                 </h1>
                 <p className="text-gray-400 text-lg md:text-xl font-medium max-w-2xl mx-auto">
-                    A armadura oficial da Constrictor Team. Todas as fotos da mesma linha estão juntas em um único cartão, basta clicar para garantir o seu no grupo oficial.
+                    A armadura oficial da nossa equipe. Escolha seu modelo, confira os detalhes na galeria e faça seu pedido de forma rápida e direta via WhatsApp.
                 </p>
             </section>
 
-            {/* Coleções Bento Box */}
-            <section className="px-4 sm:px-6 lg:px-12 pb-32 max-w-[1400px] mx-auto flex flex-col gap-12 lg:gap-16">
-                {colecoes.map((colecao, index) => (
+            {/* Listagem de Produtos E-commerce Style */}
+            <section className="px-4 sm:px-6 lg:px-12 pb-32 max-w-[1400px] mx-auto flex flex-col gap-24 lg:gap-32">
+                {colecoes.map((produto, index) => (
                     <div 
                         key={index} 
-                        className="group relative bg-zinc-950 border border-white/10 rounded-[2rem] overflow-hidden flex flex-col shadow-2xl transition-all duration-500 hover:border-white/30"
+                        className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-start"
                     >
-                        {/* Mosaico de Imagens (Bento Layout) */}
-                        {renderImages(colecao.images)}
+                        {/* Esquerda: Galeria de Imagens do Produto */}
+                        <div className="w-full lg:w-1/2">
+                            <ProductGallery images={produto.images} title={produto.title} />
+                        </div>
                         
-                        {/* Rodapé do Card */}
-                        <div className="p-8 md:p-12 flex flex-col md:flex-row justify-between items-start md:items-end gap-8 bg-gradient-to-t from-black to-zinc-950">
-                            <div className="max-w-xl">
-                                <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter mb-4 text-white">
-                                    {colecao.title}
-                                </h2>
-                                <p className="text-gray-400 text-lg">
-                                    {colecao.description}
-                                </p>
-                            </div>
+                        {/* Direita: Informações do Produto (Estilo E-commerce) */}
+                        <div className="w-full lg:w-1/2 flex flex-col pt-4 lg:sticky lg:top-32">
                             
+                            <div className="flex items-center gap-3 mb-4">
+                                <span className="bg-white/10 text-white border border-white/20 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">
+                                    Oficial
+                                </span>
+                                <span className="text-yellow-500 text-sm font-bold uppercase tracking-widest">
+                                    Disponível para Encomenda
+                                </span>
+                            </div>
+
+                            <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter mb-6 text-white">
+                                {produto.title}
+                            </h2>
+                            
+                            <p className="text-gray-300 text-lg leading-relaxed mb-8">
+                                {produto.description}
+                            </p>
+
+                            <div className="flex flex-col gap-4 mb-10">
+                                <div className="flex items-center gap-4 text-gray-400">
+                                    <ShieldCheck className="text-yellow-500" size={24} />
+                                    <span>Produto Oficial Constrictor Team</span>
+                                </div>
+                                <div className="flex items-center gap-4 text-gray-400">
+                                    <Truck className="text-yellow-500" size={24} />
+                                    <span>Entrega a combinar no CT</span>
+                                </div>
+                            </div>
+
+                            {/* Botão de Compra */}
                             <Link 
-                                href={colecao.link} 
+                                href={produto.link} 
                                 target="_blank" 
-                                className="w-full md:w-auto flex justify-center items-center gap-3 bg-white text-black font-black uppercase tracking-widest px-8 py-5 md:py-4 rounded-full hover:bg-yellow-500 transition-colors shrink-0"
+                                className="group relative w-full flex justify-center items-center gap-3 bg-yellow-500 text-black font-black uppercase tracking-widest px-8 py-5 md:py-6 rounded-2xl overflow-hidden hover:scale-[1.02] transition-transform duration-300 shadow-[0_10px_40px_rgba(234,179,8,0.2)]"
                             >
-                                <MessageCircle size={22} />
-                                Acessar Grupo
+                                <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+                                <ShoppingBag size={24} className="relative z-10" />
+                                <span className="relative z-10 text-lg">Comprar Agora</span>
                             </Link>
+
+                            <p className="text-center text-xs text-gray-500 mt-4">
+                                Você será redirecionado para o nosso grupo de vendas no WhatsApp.
+                            </p>
+
                         </div>
                     </div>
                 ))}
             </section>
+
+            {/* CSS inline para o scroll horizontal */}
+            <style dangerouslySetInnerHTML={{__html: `
+                .hide-scroll-bar {
+                    -ms-overflow-style: none;
+                    scrollbar-width: none;
+                }
+                .hide-scroll-bar::-webkit-scrollbar {
+                    display: none;
+                }
+            `}} />
         </div>
     )
 }
