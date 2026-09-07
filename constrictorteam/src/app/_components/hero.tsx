@@ -6,6 +6,8 @@ import Link from 'next/link'
 import { ShoppingBag } from 'lucide-react'
 import PromoModal from './PromoModal'
 
+import ParallaxSection from './ParallaxSection'
+
 const carouselImages = [
     '/uniforme/novacolecao.jpeg',
     '/uniforme/colecao1.jpeg',
@@ -18,17 +20,6 @@ const carouselImages = [
 ]
 
 export default function Hero() {
-    const [isIOS, setIsIOS] = useState(false)
-
-    useEffect(() => {
-        // Detecta iOS (iPhone/iPad) para ajuste do Parallax
-        if (typeof window !== 'undefined') {
-            const ua = window.navigator.userAgent
-            const iOS = /iPad|iPhone|iPod/.test(ua) || (navigator.userAgent.includes('Mac') && 'ontouchend' in document)
-            setIsIOS(iOS)
-        }
-    }, [])
-
     return (
         <main className="w-full text-white overflow-hidden bg-black relative">
 
@@ -36,11 +27,10 @@ export default function Hero() {
             {/* Ele gerencia sua própria lógica de exibição */}
             <PromoModal />
 
-
             {/* PARALLAX 1: VÍDEO DE FUNDO */}
-            <section className="relative h-screen flex items-center justify-center text-center overflow-hidden">
+            <section className="relative min-h-[100dvh] h-[100dvh] flex items-center justify-center text-center overflow-hidden">
                 <video
-                    className="absolute top-0 left-0 w-full h-full object-cover"
+                    className="absolute top-0 left-0 w-full h-full object-cover scale-105"
                     src="/cobra.mp4"
                     autoPlay
                     loop
@@ -56,54 +46,45 @@ export default function Hero() {
                             width={400}
                             height={130}
                             priority
-                            className="drop-shadow-[0_0_25px_rgba(255,255,255,0.4)] brightness-110"
+                            className="drop-shadow-[0_0_25px_rgba(255,255,255,0.4)] brightness-110 max-w-[280px] sm:max-w-[400px] h-auto"
                         />
                         <div className="w-24 h-[2px] bg-white mx-auto mt-4 opacity-60"></div>
                     </div>
                 </div>
             </section>
 
-            {/* PARALLAX 2 */}
-            <section
-                className={`${isIOS ? 'relative h-[85vh]' : 'relative h-[85vh] bg-fixed'} flex items-center justify-center bg-cover bg-center`}
-                style={{ backgroundImage: 'url(/ataide.jpg)' }}
-            >
-                <div className="absolute inset-0 bg-black/60"></div>
-                <div className="relative z-10 text-center max-w-2xl px-6" data-aos="fade-up">
-                    <h2 className="text-3xl sm:text-4xl font-bold mb-4 tracking-wide uppercase">Um Legado de Excelência</h2>
-                    <p className="text-lg opacity-90 leading-relaxed text-gray-200">
+            {/* PARALLAX 2: UM LEGADO DE EXCELÊNCIA */}
+            <ParallaxSection
+                bgImage="/ataide.jpg"
+                title="Um Legado de Excelência"
+                subtitle={
+                    <p>
                         <strong>Mestre Ataíde Ludgero Jr.</strong> — Fundador e líder da Constrictor Team, é faixa preta 6º grau de Jiu-Jitsu.
                     </p>
-                </div>
-            </section>
+                }
+            />
 
             {/* PARALLAX 3: TRANSFORMANDO VIDAS */}
-            <section
-                className={`${isIOS ? 'relative h-[85vh]' : 'relative h-[85vh] bg-fixed'} flex items-center justify-center bg-cover bg-center`}
-                style={{ backgroundImage: 'url(/projeto1.jpeg)' }}
-            >
-                <div className="absolute inset-0 bg-black/60"></div>
-                <div className="relative z-10 text-center max-w-3xl px-6" data-aos="fade-up">
-                    <h2 className="text-3xl sm:text-4xl font-bold mb-4 tracking-wide uppercase text-white">Transformando Vidas</h2>
-                    <p className="text-lg sm:text-xl opacity-90 leading-relaxed text-gray-200">
+            <ParallaxSection
+                bgImage="/projeto1.jpeg"
+                title="Transformando Vidas"
+                subtitle={
+                    <p>
                         No <strong>Constrictor Team – Instituto Vida Suave</strong>, acreditamos que o Jiu-Jitsu é uma filosofia de vida.
                     </p>
-                </div>
-            </section>
+                }
+            />
 
-            {/* PARALLAX 3 */}
-            <section
-                className={`${isIOS ? 'relative h-[85vh]' : 'relative h-[85vh] bg-fixed'} flex items-center justify-center bg-cover bg-center`}
-                style={{ backgroundImage: 'url(/backg.png)' }}
-            >
-                <div className="absolute inset-0 bg-black/60"></div>
-                <div className="relative z-10 text-center max-w-2xl px-6" data-aos="fade-up">
-                    <h2 className="text-3xl sm:text-4xl font-bold mb-4 uppercase tracking-wide">Projeto Social</h2>
-                    <p className="text-lg opacity-90 leading-relaxed text-gray-200">
+            {/* PARALLAX 4: PROJETO SOCIAL */}
+            <ParallaxSection
+                bgImage="/backg.png"
+                title="Projeto Social"
+                subtitle={
+                    <p>
                         Nossa missão é transformar vidas através do Jiu-Jitsu.
                     </p>
-                </div>
-            </section>
+                }
+            />
 
             {/* FOTO CONSTRICTOR */}
             <section className="py-8 bg-black text-white text-center px-6">

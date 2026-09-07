@@ -119,8 +119,18 @@
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    overflow-x: hidden;
+  }
   body {
     @apply bg-background text-foreground;
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
 

@@ -112,14 +112,14 @@ export default function Header() {
             <div
                 className={`
           fixed inset-0 z-40 lg:hidden
-          bg-white/95 backdrop-blur-xl
+          bg-white/98 backdrop-blur-xl
           transition-all duration-300
           ${mobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}
         `}
             >
-                <div className="pt-28 px-6 flex flex-col h-full">
+                <div className="pt-24 sm:pt-28 px-6 flex flex-col h-full overflow-y-auto overscroll-contain pb-12">
 
-                    <nav className="flex flex-col gap-3">
+                    <nav className="flex flex-col gap-1 sm:gap-2">
                         {menuItems.map((item) => (
                             <Link
                                 key={item.name}
@@ -130,8 +130,8 @@ export default function Header() {
                                 <div
                                     className="
                     flex items-center justify-between
-                    py-4 border-b border-black/20
-                    text-xl font-semibold
+                    py-3 sm:py-4 border-b border-black/15
+                    text-lg sm:text-xl font-semibold
                     text-black
                     hover:bg-black hover:text-white
                     transition-all
