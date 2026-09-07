@@ -3,9 +3,15 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useState } from 'react'
-import { ShoppingBag, MessageCircle, ShieldCheck, Truck } from 'lucide-react'
+import { ShoppingBag, ShieldCheck, Truck } from 'lucide-react'
 
 const colecoes = [
+    {
+        title: 'LOJA CONSTRICTOR TEAM — LINHA OFICIAL DE PRODUTOS',
+        description: 'A nossa linha oficial de produtos exclusivos já está disponível! Kimonos, bolsas, mochilas, bonés, roupas e acessórios para quem carrega o espírito Constrictor dentro e fora do tatame. Produtos exclusivos com a identidade da equipe. Acesse o link e faça sua encomenda!',
+        link: 'https://chat.whatsapp.com/ES1gu1mR7f46g6JrWE1xVd?s=cl&p=i&mlu=4&ilr=4',
+        images: ['/PersonalizadoNOGI.jpeg']
+    },
     {
         title: 'Camisas Oficiais Constrictor Team',
         description: 'Garanta a sua e fortaleça a identidade da nossa equipe! Encomendas abertas até 05/07/2026. Feitas com tecido premium.',
@@ -66,6 +72,26 @@ const colecoes = [
             '/uniforme/colecao7.jpeg',
             '/uniforme/colecao11.jpeg'
         ]
+    },
+    {
+        title: 'Mochilas e Bolsas Oficiais Constrictor Team',
+        description: 'Espaçosas, impermeáveis e ultra resistentes. Desenvolvidas sob medida para transportar seus kimonos e equipamentos de treino com conforto e estilo.',
+        link: 'https://chat.whatsapp.com/ES1gu1mR7f46g6JrWE1xVd?s=cl&p=i&mlu=4&ilr=4',
+        images: [
+            '/bolsasebones/bolsacard.jpeg',
+            '/bolsasebones/bolsa1.jpeg',
+            '/bolsasebones/bolsa2.jpeg'
+        ]
+    },
+    {
+        title: 'Bonés Oficiais Constrictor Team',
+        description: 'Identidade e imponência para carregar o espírito da equipe em todos os lugares. Bordado em alto relevo e ajuste ergonômico premium.',
+        link: 'https://chat.whatsapp.com/ES1gu1mR7f46g6JrWE1xVd?s=cl&p=i&mlu=4&ilr=4',
+        images: [
+            '/bolsasebones/bonecard.jpeg',
+            '/bolsasebones/bone1.jpeg',
+            '/bolsasebones/bone2.jpeg'
+        ]
     }
 ]
 
@@ -99,7 +125,7 @@ const ProductGallery = ({ images, title }: { images: string[], title: string }) 
                         onClick={() => setActiveImage(idx)}
                         className={`relative w-20 h-24 md:w-24 md:h-28 shrink-0 rounded-xl overflow-hidden transition-all duration-300
                             ${activeImage === idx 
-                                ? 'border-2 border-yellow-500 opacity-100 shadow-[0_0_15px_rgba(234,179,8,0.3)]' 
+                                ? 'border-2 border-white opacity-100 shadow-[0_0_15px_rgba(255,255,255,0.3)]' 
                                 : 'border border-white/10 opacity-50 hover:opacity-100'
                             }`}
                     >
@@ -111,23 +137,23 @@ const ProductGallery = ({ images, title }: { images: string[], title: string }) 
     )
 }
 
-export default function LojaKimonosPage() {
+export default function LojaPage() {
     return (
-        <div className="min-h-screen bg-black text-white selection:bg-yellow-500 selection:text-black">
+        <div className="min-h-screen bg-black text-white selection:bg-white selection:text-black">
             
             {/* Header / Hero da Loja */}
             <section className="pt-32 pb-16 px-6 lg:px-12 max-w-[1400px] mx-auto text-center border-b border-white/10 mb-16">
-                <span className="text-yellow-500 font-bold tracking-widest uppercase text-sm mb-4 block">
-                    Loja Oficial
+                <span className="text-zinc-400 font-bold tracking-widest uppercase text-sm mb-4 block">
+                    Loja Oficial Constrictor Team
                 </span>
                 <h1 className="text-4xl md:text-6xl lg:text-7xl font-black uppercase tracking-tighter leading-[0.9] mb-6">
-                    KIMONOS E <br />
+                    LOJA OFICIAL <br />
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500">
-                        RASH GUARD
+                        KIMONOS & PRODUTOS EXCLUSIVOS
                     </span>
                 </h1>
                 <p className="text-gray-400 text-lg md:text-xl font-medium max-w-2xl mx-auto">
-                    A armadura oficial da nossa equipe. Escolha seu modelo, confira os detalhes na galeria e faça seu pedido de forma rápida e direta via WhatsApp.
+                    Kimonos, bolsas, mochilas, bonés, roupas e acessórios oficiais. Escolha seu modelo, confira os detalhes na galeria e faça sua encomenda direto pelo WhatsApp.
                 </p>
             </section>
 
@@ -148,9 +174,9 @@ export default function LojaKimonosPage() {
                             
                             <div className="flex items-center gap-3 mb-4">
                                 <span className="bg-white/10 text-white border border-white/20 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">
-                                    Oficial
+                                    {index === 0 ? 'Destaque Oficial' : 'Oficial'}
                                 </span>
-                                <span className="text-yellow-500 text-sm font-bold uppercase tracking-widest">
+                                <span className="text-white text-sm font-bold uppercase tracking-widest">
                                     Disponível para Encomenda
                                 </span>
                             </div>
@@ -164,13 +190,13 @@ export default function LojaKimonosPage() {
                             </p>
 
                             <div className="flex flex-col gap-4 mb-10">
-                                <div className="flex items-center gap-4 text-gray-400">
-                                    <ShieldCheck className="text-yellow-500" size={24} />
+                                <div className="flex items-center gap-4 text-gray-300">
+                                    <ShieldCheck className="text-white" size={24} />
                                     <span>Produto Oficial Constrictor Team</span>
                                 </div>
-                                <div className="flex items-center gap-4 text-gray-400">
-                                    <Truck className="text-yellow-500" size={24} />
-                                    <span>Entrega a combinar no CT</span>
+                                <div className="flex items-center gap-4 text-gray-300">
+                                    <Truck className="text-white" size={24} />
+                                    <span>Entrega e retirada no CT / Envio</span>
                                 </div>
                             </div>
 
@@ -178,15 +204,15 @@ export default function LojaKimonosPage() {
                             <Link 
                                 href={produto.link} 
                                 target="_blank" 
-                                className="group relative w-full flex justify-center items-center gap-3 bg-yellow-500 text-black font-black uppercase tracking-widest px-8 py-5 md:py-6 rounded-2xl overflow-hidden hover:scale-[1.02] transition-transform duration-300 shadow-[0_10px_40px_rgba(234,179,8,0.2)]"
+                                className="group relative w-full flex justify-center items-center gap-3 bg-white text-black font-black uppercase tracking-widest px-8 py-5 md:py-6 rounded-2xl overflow-hidden hover:scale-[1.02] transition-transform duration-300 shadow-[0_10px_40px_rgba(255,255,255,0.15)]"
                             >
-                                <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+                                <div className="absolute inset-0 bg-zinc-200 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
                                 <ShoppingBag size={24} className="relative z-10" />
-                                <span className="relative z-10 text-lg">Comprar Agora</span>
+                                <span className="relative z-10 text-lg">Acessar e Encomendar</span>
                             </Link>
 
                             <p className="text-center text-xs text-gray-500 mt-4">
-                                Você será redirecionado para o nosso grupo de vendas no WhatsApp.
+                                Você será redirecionado para o nosso grupo de pedidos no WhatsApp.
                             </p>
 
                         </div>

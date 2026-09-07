@@ -77,12 +77,16 @@ export default function Hero() {
                 </div>
             </section>
 
-            {/* SEÇÃO 3 */}
-            <section className="py-24 bg-[#111] text-gray-100 text-center px-6">
-                <div className="max-w-3xl mx-auto space-y-6" data-aos="fade-up">
-                    <h2 className="text-3xl font-extrabold uppercase tracking-widest text-white">Transformando vidas</h2>
-                    <p className="text-lg leading-relaxed text-gray-300">
-                        No Constrictor Team – Instituto Vida Suave, acreditamos que o Jiu-Jitsu é uma filosofia de vida.
+            {/* PARALLAX 3: TRANSFORMANDO VIDAS */}
+            <section
+                className={`${isIOS ? 'relative h-[85vh]' : 'relative h-[85vh] bg-fixed'} flex items-center justify-center bg-cover bg-center`}
+                style={{ backgroundImage: 'url(/projeto1.jpeg)' }}
+            >
+                <div className="absolute inset-0 bg-black/60"></div>
+                <div className="relative z-10 text-center max-w-3xl px-6" data-aos="fade-up">
+                    <h2 className="text-3xl sm:text-4xl font-bold mb-4 tracking-wide uppercase text-white">Transformando Vidas</h2>
+                    <p className="text-lg sm:text-xl opacity-90 leading-relaxed text-gray-200">
+                        No <strong>Constrictor Team – Instituto Vida Suave</strong>, acreditamos que o Jiu-Jitsu é uma filosofia de vida.
                     </p>
                 </div>
             </section>

@@ -253,6 +253,36 @@ export default function Segments() {
                         </div>
                     </div>
                 </div>
+
+                {/* BANNER FRANQUEADO */}
+                <div
+                    data-aos="fade-up"
+                    data-aos-delay="300"
+                    className="mt-16 rounded-3xl bg-gradient-to-r from-zinc-950 via-zinc-900 to-zinc-950 border border-yellow-500/40 p-8 sm:p-10 shadow-[0_0_40px_rgba(234,179,8,0.15)] flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left"
+                >
+                    <div className="space-y-3 max-w-2xl">
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-yellow-500/10 border border-yellow-500/30 text-yellow-400 text-xs font-bold uppercase tracking-wider">
+                            <span className="w-2 h-2 rounded-full bg-yellow-400 animate-pulse" />
+                            Expansão Nacional & Internacional
+                        </div>
+                        <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+                            Torne-se um Franqueado <span className="text-yellow-400">Constrictor Team</span> no Brasil ou no Exterior
+                        </h3>
+                        <p className="text-zinc-300 text-sm sm:text-base leading-relaxed">
+                            Leve a tradição, a metodologia de ensino e a excelência técnica de uma das maiores escolas de artes marciais do mundo para a sua academia, cidade ou país.
+                        </p>
+                    </div>
+
+                    <a
+                        href="https://wa.me/5561991627171?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20como%20me%20tornar%20um%20franqueado%20da%20Constrictor%20Team%20no%20Brasil%20ou%20no%20exterior."
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-green-500 hover:bg-green-600 text-black font-extrabold rounded-full transition-all duration-300 shadow-[0_0_25px_rgba(34,197,94,0.4)] hover:scale-105 shrink-0 uppercase tracking-wide text-xs sm:text-sm"
+                    >
+                        <InstagramLogo className="hidden" />
+                        Quero Ser Franqueado
+                    </a>
+                </div>
             </div>
         </section>
     )

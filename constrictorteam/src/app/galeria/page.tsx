@@ -4,14 +4,14 @@ import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
-import { X, ChevronLeft, ChevronRight, Trophy, Award, Filter, MessageCircle } from 'lucide-react'
+import { X, ChevronLeft, ChevronRight, Trophy, Award, Filter, MessageCircle, Flame } from 'lucide-react'
 
 // --- Tipos ---
 interface GalleryImage {
     id: number
     src: string
     alt: string
-    category: 'graduacao' | 'competicoes'
+    category: 'graduacao' | 'competicoes' | 'treinos'
     title: string
     description: string
 }
@@ -27,8 +27,31 @@ interface Categoria {
 const BANNER_GERAL_SRC = "/backg.png" // Novo banner para "Todas"
 const BANNER_GRADUACAO_SRC = "/galeria/graduacao/grade20.jpeg"
 const BANNER_COMPETICOES_SRC = "/galeria/competicoes/competicaoPage.jpeg"
+const BANNER_TREINO_SRC = "/openMAt.jpeg"
 
 // --- DADOS ---
+
+// Lista Exclusiva de Treinos da Equipe
+const IMAGENS_TREINO: GalleryImage[] = [
+    { id: 101, src: '/imagenstreino/WhatsApp Image 2026-08-22 at 16.27.34.jpeg', alt: 'Treino Constrictor Team 1', category: 'treinos', title: 'Treino da Equipe', description: 'Dedicação e técnica no tatame' },
+    { id: 102, src: '/imagenstreino/WhatsApp Image 2026-08-22 at 16.27.35 (1).jpeg', alt: 'Treino Constrictor Team 2', category: 'treinos', title: 'Treino da Equipe', description: 'Dedicação e técnica no tatame' },
+    { id: 103, src: '/imagenstreino/WhatsApp Image 2026-08-22 at 16.27.35.jpeg', alt: 'Treino Constrictor Team 3', category: 'treinos', title: 'Treino da Equipe', description: 'Dedicação e técnica no tatame' },
+    { id: 104, src: '/imagenstreino/WhatsApp Image 2026-08-22 at 16.27.36 (1).jpeg', alt: 'Treino Constrictor Team 4', category: 'treinos', title: 'Treino da Equipe', description: 'Dedicação e técnica no tatame' },
+    { id: 105, src: '/imagenstreino/WhatsApp Image 2026-08-22 at 16.27.36 (2).jpeg', alt: 'Treino Constrictor Team 5', category: 'treinos', title: 'Treino da Equipe', description: 'Dedicação e técnica no tatame' },
+    { id: 106, src: '/imagenstreino/WhatsApp Image 2026-08-22 at 16.27.36 (3).jpeg', alt: 'Treino Constrictor Team 6', category: 'treinos', title: 'Treino da Equipe', description: 'Dedicação e técnica no tatame' },
+    { id: 107, src: '/imagenstreino/WhatsApp Image 2026-08-22 at 16.27.36 (4).jpeg', alt: 'Treino Constrictor Team 7', category: 'treinos', title: 'Treino da Equipe', description: 'Dedicação e técnica no tatame' },
+    { id: 108, src: '/imagenstreino/WhatsApp Image 2026-08-22 at 16.27.36.jpeg', alt: 'Treino Constrictor Team 8', category: 'treinos', title: 'Treino da Equipe', description: 'Dedicação e técnica no tatame' },
+    { id: 109, src: '/imagenstreino/WhatsApp Image 2026-08-22 at 16.27.37 (1).jpeg', alt: 'Treino Constrictor Team 9', category: 'treinos', title: 'Treino da Equipe', description: 'Dedicação e técnica no tatame' },
+    { id: 110, src: '/imagenstreino/WhatsApp Image 2026-08-22 at 16.27.37 (2).jpeg', alt: 'Treino Constrictor Team 10', category: 'treinos', title: 'Treino da Equipe', description: 'Dedicação e técnica no tatame' },
+    { id: 111, src: '/imagenstreino/WhatsApp Image 2026-08-22 at 16.27.37 (3).jpeg', alt: 'Treino Constrictor Team 11', category: 'treinos', title: 'Treino da Equipe', description: 'Dedicação e técnica no tatame' },
+    { id: 112, src: '/imagenstreino/WhatsApp Image 2026-08-22 at 16.27.37.jpeg', alt: 'Treino Constrictor Team 12', category: 'treinos', title: 'Treino da Equipe', description: 'Dedicação e técnica no tatame' },
+    { id: 113, src: '/imagenstreino/WhatsApp Image 2026-08-22 at 16.27.38 (1).jpeg', alt: 'Treino Constrictor Team 13', category: 'treinos', title: 'Treino da Equipe', description: 'Dedicação e técnica no tatame' },
+    { id: 114, src: '/imagenstreino/WhatsApp Image 2026-08-22 at 16.27.38 (2).jpeg', alt: 'Treino Constrictor Team 14', category: 'treinos', title: 'Treino da Equipe', description: 'Dedicação e técnica no tatame' },
+    { id: 115, src: '/imagenstreino/WhatsApp Image 2026-08-22 at 16.27.38 (3).jpeg', alt: 'Treino Constrictor Team 15', category: 'treinos', title: 'Treino da Equipe', description: 'Dedicação e técnica no tatame' },
+    { id: 116, src: '/imagenstreino/WhatsApp Image 2026-08-22 at 16.27.38 (4).jpeg', alt: 'Treino Constrictor Team 16', category: 'treinos', title: 'Treino da Equipe', description: 'Dedicação e técnica no tatame' },
+    { id: 117, src: '/imagenstreino/WhatsApp Image 2026-08-22 at 16.27.38.jpeg', alt: 'Treino Constrictor Team 17', category: 'treinos', title: 'Treino da Equipe', description: 'Dedicação e técnica no tatame' },
+    { id: 118, src: '/imagenstreino/WhatsApp Image 2026-08-22 at 16.27.39.jpeg', alt: 'Treino Constrictor Team 18', category: 'treinos', title: 'Treino da Equipe', description: 'Dedicação e técnica no tatame' },
+]
 
 // Lista Exclusiva de Graduação
 const IMAGENS_GRADUACAO: GalleryImage[] = [
@@ -83,7 +106,7 @@ const IMAGENS_COMPETICOES: GalleryImage[] = [
     { id: 48, src: '/galeria/competicoes/comp17.jpeg', alt: 'Competição - Foto 17', category: 'competicoes', title: 'Campeonato 2024', description: 'Nossos atletas em ação' },
 ]
 
-const ALL_IMAGES = [...IMAGENS_GRADUACAO, ...IMAGENS_COMPETICOES]
+const ALL_IMAGES = [...IMAGENS_TREINO, ...IMAGENS_GRADUACAO, ...IMAGENS_COMPETICOES]
 
 export default function Galeria() {
     const [selectedCategory, setSelectedCategory] = useState<string>('all')
@@ -101,6 +124,12 @@ export default function Galeria() {
             name: 'Todas as Fotos',
             icon: <Filter className="w-4 h-4" />,
             count: ALL_IMAGES.length
+        },
+        {
+            id: 'treinos',
+            name: 'Treinos da Equipe',
+            icon: <Flame className="w-4 h-4" />,
+            count: IMAGENS_TREINO.length
         },
         {
             id: 'graduacao',
@@ -123,6 +152,12 @@ export default function Galeria() {
     // --- LÓGICA DO BANNER DINÂMICO ---
     const getBannerContent = () => {
         switch (selectedCategory) {
+            case 'treinos':
+                return {
+                    src: BANNER_TREINO_SRC,
+                    title: 'Treinos e Dia a Dia no Tatame',
+                    desc: 'O dia a dia de suor, disciplina, técnica e união nos tatames da Constrictor Team.'
+                }
             case 'graduacao':
                 return {
                     src: BANNER_GRADUACAO_SRC,
@@ -148,9 +183,11 @@ export default function Galeria() {
 
     const filteredImages = selectedCategory === 'all'
         ? ALL_IMAGES
-        : selectedCategory === 'graduacao'
-            ? IMAGENS_GRADUACAO
-            : IMAGENS_COMPETICOES
+        : selectedCategory === 'treinos'
+            ? IMAGENS_TREINO
+            : selectedCategory === 'graduacao'
+                ? IMAGENS_GRADUACAO
+                : IMAGENS_COMPETICOES
 
     const currentImageIndex = selectedImage !== null
         ? ALL_IMAGES.findIndex(img => img.id === selectedImage)
@@ -339,8 +376,18 @@ export default function Galeria() {
                                             <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/80 to-transparent pt-12 pb-6 px-6 text-white rounded-b-lg">
                                                 <h3 className="text-xl font-bold mb-1">{activeImage.title}</h3>
                                                 <p className="text-gray-300 mb-2">{activeImage.description}</p>
-                                                <span className={`px-3 py-1 rounded-full text-sm font-medium ${activeImage.category === 'graduacao' ? 'bg-white text-black' : 'bg-green-600 text-white'}`}>
-                                                    {activeImage.category === 'graduacao' ? 'Graduação Sensei Breno Gusmão' : 'Competições e Campeonatos'}
+                                                <span className={`px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider ${
+                                                    activeImage.category === 'graduacao'
+                                                        ? 'bg-white text-black'
+                                                        : activeImage.category === 'treinos'
+                                                            ? 'bg-zinc-800 text-white border border-white/20'
+                                                            : 'bg-zinc-700 text-white'
+                                                }`}>
+                                                    {activeImage.category === 'graduacao'
+                                                        ? 'Graduação Sensei Breno Gusmão'
+                                                        : activeImage.category === 'treinos'
+                                                            ? 'Treinos da Equipe'
+                                                            : 'Competições e Campeonatos'}
                                                 </span>
                                             </div>
                                         </>

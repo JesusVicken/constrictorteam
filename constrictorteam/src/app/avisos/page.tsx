@@ -16,6 +16,38 @@ const WhatsAppIcon = () => (
 // --- LISTA DE IMAGENS ---
 const flyers = [
     {
+        id: 300,
+        src: '/graduacao2026/imagemcardPrincipal.jpeg',
+        alt: 'Graduação 2026 Constrictor Team - 28/11 às 16h',
+        actionLink: '/graduacao',
+        actionLabel: 'Ver Detalhes da Graduação',
+        isInternal: true
+    },
+    {
+        id: 200,
+        src: '/openMAt.jpeg',
+        alt: 'Open Mat Constrictor Team - Todo Sábado às 10h30',
+        actionLink: 'https://wa.me/5561991627171?text=Ol%C3%A1!%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20o%20Open%20Mat%20de%20S%C3%A1bado%20da%20Constrictor%20Team.'
+    },
+    {
+        id: 100,
+        src: '/LojaConstrictor.jpeg',
+        alt: 'Loja Oficial Constrictor Team - Linha Completa de Produtos',
+        actionLink: 'https://chat.whatsapp.com/ES1gu1mR7f46g6JrWE1xVd?s=cl&p=i&mlu=4&ilr=4'
+    },
+    {
+        id: 101,
+        src: '/bolsasebones/bolsacard.jpeg',
+        alt: 'Mochilas e Bolsas Oficiais Constrictor Team',
+        actionLink: 'https://chat.whatsapp.com/ES1gu1mR7f46g6JrWE1xVd?s=cl&p=i&mlu=4&ilr=4'
+    },
+    {
+        id: 102,
+        src: '/bolsasebones/bonecard.jpeg',
+        alt: 'Bonés Oficiais Constrictor Team',
+        actionLink: 'https://chat.whatsapp.com/ES1gu1mR7f46g6JrWE1xVd?s=cl&p=i&mlu=4&ilr=4'
+    },
+    {
         id: 4,
         src: '/aviso4.jpeg',
         alt: 'Produção Kimono Old School (Preto)',
@@ -142,16 +174,26 @@ export default function AvisosPage() {
 
                                     {/* Botão flutuante na galeria */}
                                     <div className="relative z-30 p-4 w-full">
-                                        <a
-                                            href={item.actionLink}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            onClick={(e) => e.stopPropagation()} // ISSO AQUI IMPEDE QUE A FOTO ABRA SE ELE CLICAR NO BOTÃO
-                                            className="flex items-center justify-center gap-2 w-full py-3.5 bg-green-500 hover:bg-green-600 text-black font-extrabold rounded-xl transition-all duration-300 shadow-[0_0_20px_rgba(34,197,94,0.4)] hover:shadow-[0_0_30px_rgba(34,197,94,0.6)] hover:-translate-y-1 uppercase tracking-wide text-[11px] sm:text-xs"
-                                        >
-                                            <WhatsAppIcon />
-                                            Entrar no Grupo
-                                        </a>
+                                        {item.isInternal ? (
+                                            <Link
+                                                href={item.actionLink}
+                                                onClick={(e) => e.stopPropagation()}
+                                                className="flex items-center justify-center gap-2 w-full py-3.5 bg-white hover:bg-zinc-200 text-black font-extrabold rounded-xl transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:-translate-y-1 uppercase tracking-wide text-[11px] sm:text-xs text-center"
+                                            >
+                                                {item.actionLabel || 'Ver Mais Informações'}
+                                            </Link>
+                                        ) : (
+                                            <a
+                                                href={item.actionLink}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                onClick={(e) => e.stopPropagation()}
+                                                className="flex items-center justify-center gap-2 w-full py-3.5 bg-green-500 hover:bg-green-600 text-black font-extrabold rounded-xl transition-all duration-300 shadow-[0_0_20px_rgba(34,197,94,0.4)] hover:shadow-[0_0_30px_rgba(34,197,94,0.6)] hover:-translate-y-1 uppercase tracking-wide text-[11px] sm:text-xs"
+                                            >
+                                                <WhatsAppIcon />
+                                                {item.actionLabel || 'Entrar no Grupo'}
+                                            </a>
+                                        )}
                                     </div>
                                 </>
                             )}
@@ -201,15 +243,24 @@ export default function AvisosPage() {
                                 {/* CAPTAÇÃO 2: Botão dentro do Modal */}
                                 {selectedFlyer.actionLink && (
                                     <div className="p-4 md:p-6 bg-gradient-to-t from-zinc-950 to-zinc-900 border-t border-white/5 flex items-center justify-center shrink-0">
-                                        <a
-                                            href={selectedFlyer.actionLink}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="w-full sm:w-2/3 md:w-1/2 flex items-center justify-center gap-2 px-6 py-3.5 bg-green-500 hover:bg-green-600 text-black font-extrabold rounded-full transition-all duration-300 shadow-[0_0_20px_rgba(34,197,94,0.3)] hover:shadow-[0_0_30px_rgba(34,197,94,0.5)] hover:-translate-y-1 uppercase tracking-wide text-[13px] md:text-sm"
-                                        >
-                                            <WhatsAppIcon />
-                                            Entrar no Grupo de Pedidos
-                                        </a>
+                                        {selectedFlyer.isInternal ? (
+                                            <Link
+                                                href={selectedFlyer.actionLink}
+                                                className="w-full sm:w-2/3 md:w-1/2 flex items-center justify-center gap-2 px-6 py-3.5 bg-white hover:bg-zinc-200 text-black font-extrabold rounded-full transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:-translate-y-1 uppercase tracking-wide text-[13px] md:text-sm text-center"
+                                            >
+                                                {selectedFlyer.actionLabel || 'Ver Mais Informações'}
+                                            </Link>
+                                        ) : (
+                                            <a
+                                                href={selectedFlyer.actionLink}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="w-full sm:w-2/3 md:w-1/2 flex items-center justify-center gap-2 px-6 py-3.5 bg-green-500 hover:bg-green-600 text-black font-extrabold rounded-full transition-all duration-300 shadow-[0_0_20px_rgba(34,197,94,0.3)] hover:shadow-[0_0_30px_rgba(34,197,94,0.5)] hover:-translate-y-1 uppercase tracking-wide text-[13px] md:text-sm"
+                                            >
+                                                <WhatsAppIcon />
+                                                {selectedFlyer.actionLabel || 'Entrar no Grupo de Pedidos'}
+                                            </a>
+                                        )}
                                     </div>
                                 )}
 

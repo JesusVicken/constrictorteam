@@ -25,11 +25,12 @@ export default function Header() {
     const menuItems = [
         { name: 'Início', href: '/' },
         { name: 'Sobre', href: '/sobre' },
+        { name: 'Projetos Sociais', href: '/projetos' },
         { name: 'Horários', href: '/grade' },
         { name: 'Graduação', href: '/graduacao' },
         { name: 'Seminários', href: '/seminario' },
         { name: 'Galeria', href: '/galeria' },
-        { name: 'Kimonos', href: '/kimonos' },
+        { name: 'Loja', href: '/kimonos' },
         { name: 'Avisos', href: '/avisos' },
         { name: 'Nosso CT', href: '/encontre' },
     ]
