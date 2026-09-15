@@ -32,7 +32,7 @@ const linhagem: Mestre[] = [
         name: 'Mestre Popó',
         image: '/popo.jpeg',
         role: 'Nosso Mestre',
-        description: 'Pai do Mestre Ataíde e pilar da Constrictor Team'
+        description: 'Pilar da construção da Constrictor Team'
     },
     {
         name: 'Ataíde Jr.',
