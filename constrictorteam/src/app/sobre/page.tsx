@@ -302,6 +302,160 @@ export default function SobrePage() {
                 </div>
             </section>
 
+            {/* ═══════════════════════════════════════════════════════════════
+                SEÇÃO NOSSAS RAÍZES — Manifesto visual preto & branco
+            ═══════════════════════════════════════════════════════════════ */}
+            <section className="relative bg-black overflow-hidden">
+
+                {/* ── BLOCO 1: Poster de impacto com parallax sutil ── */}
+                <div className="relative w-full min-h-[60vh] sm:min-h-[70vh] lg:min-h-[85vh] flex items-center justify-center overflow-hidden">
+                    {/* Imagem de fundo — poster "Nossas Raízes" */}
+                    <div className="absolute inset-0">
+                        <Image
+                            src="/nossas-raizes.jpg"
+                            alt="Nossas Raízes — Constrictor Team"
+                            fill
+                            className="object-cover object-top"
+                            sizes="100vw"
+                            quality={90}
+                            priority
+                        />
+                    </div>
+                    {/* Overlay gradiente para legibilidade */}
+                    <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
+
+                    {/* Texto sobre a imagem (mobile: oculto pois a imagem já tem texto) */}
+                    <div className="relative z-10 text-center px-4 sm:px-6 py-20">
+                        <motion.div
+                            initial={{ opacity: 0, y: 40 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 1, ease: "easeOut" }}
+                            viewport={{ once: true }}
+                        >
+                            <span className="inline-block text-xs sm:text-sm font-bold tracking-[0.35em] uppercase text-white/60 mb-4 sm:mb-6">
+                                Constrictor Team
+                            </span>
+                        </motion.div>
+                    </div>
+                </div>
+
+                {/* ── BLOCO 2: Manifesto textual ── */}
+                <div className="relative z-10 bg-black">
+                    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-28">
+
+                        {/* Título da seção */}
+                        <motion.div
+                            className="text-center mb-12 sm:mb-16"
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8 }}
+                            viewport={{ once: true }}
+                        >
+                            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-[1.1]">
+                                <span className="block text-white/50 text-lg sm:text-xl md:text-2xl font-light tracking-[0.2em] uppercase mb-3 sm:mb-4">
+                                    Nossas Raízes
+                                </span>
+                                <span className="bg-gradient-to-r from-white via-gray-200 to-white/70 bg-clip-text text-transparent">
+                                    Nosso Legado. Nossa História.
+                                </span>
+                            </h2>
+                            <div className="w-20 sm:w-28 h-[2px] bg-gradient-to-r from-transparent via-white to-transparent mx-auto mt-6 sm:mt-8" />
+                        </motion.div>
+
+                        {/* Blocos de texto com tipografia editorial */}
+                        <div className="space-y-8 sm:space-y-10">
+
+                            {/* Parágrafo principal */}
+                            <motion.div
+                                className="relative"
+                                initial={{ opacity: 0, y: 25 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.7, delay: 0.1 }}
+                                viewport={{ once: true }}
+                            >
+                                <div className="border-l-2 border-white/30 pl-6 sm:pl-8 lg:pl-10">
+                                    <p className="text-lg sm:text-xl lg:text-2xl text-gray-300 leading-relaxed font-light">
+                                        Toda equipe carrega uma história.
+                                        <br className="hidden sm:block" />
+                                        Toda faixa representa uma caminhada.
+                                        <br className="hidden sm:block" />
+                                        E todo mestre deixa um legado que continua sendo construído pelas próximas gerações.
+                                    </p>
+                                </div>
+                            </motion.div>
+
+                            {/* Parágrafo central */}
+                            <motion.div
+                                initial={{ opacity: 0, y: 25 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.7, delay: 0.2 }}
+                                viewport={{ once: true }}
+                            >
+                                <p className="text-base sm:text-lg lg:text-xl text-gray-400 leading-relaxed max-w-3xl mx-auto text-center">
+                                    A <strong className="text-white font-semibold">Constrictor Team</strong> nasceu de raízes fortes,
+                                    de pessoas que dedicaram suas vidas ao Jiu-Jitsu e ajudaram a formar uma tradição
+                                    que vai muito além do tatame.
+                                </p>
+                            </motion.div>
+
+                            {/* Tripé: Passado / Presente / Futuro */}
+                            <motion.div
+                                className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 pt-4 sm:pt-8"
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.8, delay: 0.3 }}
+                                viewport={{ once: true }}
+                            >
+                                {[
+                                    { titulo: 'Passado', texto: 'que nos inspira.' },
+                                    { titulo: 'Presente', texto: 'que nos fortalece.' },
+                                    { titulo: 'Futuro', texto: 'que continuamos construindo.' },
+                                ].map((item, i) => (
+                                    <motion.div
+                                        key={item.titulo}
+                                        className="text-center group"
+                                        initial={{ opacity: 0, y: 20 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        transition={{ duration: 0.5, delay: 0.4 + i * 0.15 }}
+                                        viewport={{ once: true }}
+                                    >
+                                        <div className="relative inline-block mb-3 sm:mb-4">
+                                            <span className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight">
+                                                {item.titulo}
+                                            </span>
+                                            <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-8 h-[2px] bg-white/40 group-hover:w-full group-hover:bg-white transition-all duration-500" />
+                                        </div>
+                                        <p className="text-sm sm:text-base text-gray-500 font-light italic">
+                                            {item.texto}
+                                        </p>
+                                    </motion.div>
+                                ))}
+                            </motion.div>
+                        </div>
+
+                        {/* Linha decorativa final */}
+                        <motion.div
+                            className="flex items-center justify-center gap-4 mt-12 sm:mt-16"
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            transition={{ duration: 1, delay: 0.5 }}
+                            viewport={{ once: true }}
+                        >
+                            <div className="flex-1 max-w-[100px] h-px bg-gradient-to-r from-transparent to-white/30" />
+                            <Image
+                                src="/constrictorteam.png"
+                                alt="Constrictor Team"
+                                width={40}
+                                height={40}
+                                className="opacity-40"
+                            />
+                            <div className="flex-1 max-w-[100px] h-px bg-gradient-to-l from-transparent to-white/30" />
+                        </motion.div>
+                    </div>
+                </div>
+            </section>
+
             {/* História Section */}
             <section id="historia" className="relative py-20 lg:py-32 overflow-hidden bg-black">
                 {/* Background Pattern */}
