@@ -62,7 +62,7 @@ export default function SobrePage() {
         target: raizesRef,
         offset: ['start end', 'end start']
     })
-    const raizesY = useTransform(raizesScrollProgress, [0, 1], ['-15%', '15%'])
+    const raizesY = useTransform(raizesScrollProgress, [0, 1], ['-30%', '30%'])
 
     const whatsappNumber = '6191627171'
     const whatsappMessage = 'Olá, gostaria de mais informações sobre a Constrictor Team.'
@@ -320,9 +320,9 @@ export default function SobrePage() {
                     ref={raizesRef}
                     className="relative w-full min-h-[70vh] sm:min-h-[80vh] lg:min-h-[90vh] flex items-center justify-center overflow-hidden"
                 >
-                    {/* Imagem com parallax — a imagem é 140% da altura para ter espaço de translação */}
+                    {/* Imagem com parallax — 250% da altura do container para percorrer toda a foto */}
                     <motion.div
-                        className="absolute inset-x-0 -top-[20%] h-[140%] w-full pointer-events-none transform-gpu"
+                        className="absolute inset-x-0 -top-[75%] h-[250%] w-full pointer-events-none transform-gpu"
                         style={{
                             y: raizesY,
                             willChange: 'transform'
