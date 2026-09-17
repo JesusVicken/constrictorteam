@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { ShoppingBag } from 'lucide-react'
+import { ShoppingBag, ArrowRight } from 'lucide-react'
 import PromoModal from './PromoModal'
 
 import ParallaxSection from './ParallaxSection'
@@ -64,16 +64,44 @@ export default function Hero() {
                 }
             />
 
-            {/* PARALLAX 3: TRANSFORMANDO VIDAS */}
-            <ParallaxSection
-                bgImage="/projeto1.jpeg"
-                title="Transformando Vidas"
-                subtitle={
-                    <p>
-                        No <strong>Constrictor Team – Instituto Vida Suave</strong>, acreditamos que o Jiu-Jitsu é uma filosofia de vida.
-                    </p>
-                }
-            />
+            {/* SEÇÃO TRANSFORMANDO VIDAS (SEM PARALLAX - FOTO COMPLETA + REDIRECT) */}
+            <section className="relative py-20 bg-black text-white px-4 sm:px-6 overflow-hidden border-t border-white/10">
+                <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-10 lg:gap-16" data-aos="fade-up">
+                    {/* Imagem Completa Sem Corte */}
+                    <div className="w-full lg:w-1/2 relative rounded-2xl overflow-hidden border border-white/20 shadow-2xl bg-zinc-900 group">
+                        <Image
+                            src="/projeto1.jpeg"
+                            alt="Transformando Vidas — Projeto Social"
+                            width={1200}
+                            height={800}
+                            className="w-full h-auto object-contain hover:scale-102 transition-transform duration-500"
+                            priority
+                        />
+                    </div>
+
+                    {/* Conteúdo & Redirect para Projetos Sociais */}
+                    <div className="w-full lg:w-1/2 text-center lg:text-left space-y-6">
+                        <span className="inline-block px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-xs sm:text-sm font-bold uppercase tracking-widest text-yellow-400">
+                            Instituto Vida Suave
+                        </span>
+                        <h2 className="text-3xl sm:text-5xl font-black uppercase tracking-tight text-white leading-tight">
+                            Transformando Vidas
+                        </h2>
+                        <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
+                            No <strong>Constrictor Team – Instituto Vida Suave</strong>, acreditamos que o Jiu-Jitsu é uma filosofia de vida capaz de formar cidadãos, resgatar a auto-estima e construir caminhos de esperança e disciplina.
+                        </p>
+                        <div className="pt-2 flex justify-center lg:justify-start">
+                            <Link
+                                href="/projetos"
+                                className="inline-flex items-center gap-3 px-8 py-4 bg-white text-black font-black uppercase tracking-wider rounded-xl hover:bg-yellow-500 hover:scale-105 transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.2)]"
+                            >
+                                <span>Ver Projetos Sociais</span>
+                                <ArrowRight size={20} />
+                            </Link>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
             {/* PARALLAX 4: PROJETO SOCIAL */}
             <ParallaxSection

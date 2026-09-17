@@ -51,6 +51,37 @@ const CounterItem = ({ value, suffix }: { value: number, suffix: string }) => {
     return <span ref={ref}>0{suffix}</span>
 }
 
+// --- Componente de Digitação (Efeito Digitando e Apagando) ---
+const TypewriterText = ({ text }: { text: string }) => {
+    const [currentText, setCurrentText] = useState('')
+    const [isDeleting, setIsDeleting] = useState(false)
+
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+            if (!isDeleting) {
+                setCurrentText(text.substring(0, currentText.length + 1))
+                if (currentText === text) {
+                    setTimeout(() => setIsDeleting(true), 2500)
+                }
+            } else {
+                setCurrentText(text.substring(0, currentText.length - 1))
+                if (currentText === '') {
+                    setIsDeleting(false)
+                }
+            }
+        }, isDeleting ? 40 : 90)
+
+        return () => clearTimeout(timeout)
+    }, [currentText, isDeleting, text])
+
+    return (
+        <span className="bg-gradient-to-r from-white via-gray-200 to-white/70 bg-clip-text text-transparent inline-block">
+            {currentText}
+            <span className="inline-block w-[3px] h-[0.8em] bg-white ml-1.5 align-middle animate-pulse" />
+        </span>
+    )
+}
+
 export default function SobrePage() {
     const [isMobile, setIsMobile] = useState(false)
     const [currentImageIndex, setCurrentImageIndex] = useState(0)
@@ -376,7 +407,7 @@ export default function SobrePage() {
                                     Nossas Raízes
                                 </span>
                                 <span className="bg-gradient-to-r from-white via-gray-200 to-white/70 bg-clip-text text-transparent">
-                                    Nosso Legado. Nossa História.
+                                    <TypewriterText text="Nosso Legado. Nossa História." />
                                 </span>
                             </h2>
                             <div className="w-20 sm:w-28 h-[2px] bg-gradient-to-r from-transparent via-white to-transparent mx-auto mt-6 sm:mt-8" />
@@ -470,6 +501,37 @@ export default function SobrePage() {
                                 className="opacity-40"
                             />
                             <div className="flex-1 max-w-[100px] h-px bg-gradient-to-l from-transparent to-white/30" />
+                        </motion.div>
+
+                        {/* ── BLOCO DE EXIBIÇÃO DA FOTO COMPLETA (SEM CORTE) ── */}
+                        <motion.div
+                            className="mt-16 sm:mt-24 max-w-4xl mx-auto"
+                            initial={{ opacity: 0, y: 40 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.9 }}
+                            viewport={{ once: true }}
+                        >
+                            <div className="text-center mb-6">
+                                <span className="text-yellow-400 font-bold uppercase tracking-widest text-xs sm:text-sm">
+                                    Poster Oficial das Nossas Raízes
+                                </span>
+                                <h3 className="text-xl sm:text-3xl font-black text-white mt-1 uppercase tracking-tight">
+                                    Foto Completa das Nossas Raízes
+                                </h3>
+                            </div>
+                            <div className="relative rounded-3xl overflow-hidden border border-white/20 shadow-[0_0_50px_rgba(255,255,255,0.15)] bg-zinc-950 p-2 sm:p-4">
+                                <Image
+                                    src="/nossas-raizes.jpg"
+                                    alt="Poster Completo Nossas Raízes - Constrictor Team"
+                                    width={1200}
+                                    height={1800}
+                                    className="w-full h-auto object-contain rounded-2xl"
+                                    quality={100}
+                                />
+                            </div>
+                            <p className="text-center text-gray-400 text-xs sm:text-sm mt-4 italic">
+                                Registro histórico completo — Árvore Genealógica e Valores da Constrictor Team
+                            </p>
                         </motion.div>
                     </div>
                 </div>
