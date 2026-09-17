@@ -22,7 +22,7 @@ import {
 } from '@phosphor-icons/react/dist/ssr'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { motion, AnimatePresence, PanInfo, useInView, animate } from 'framer-motion'
+import { motion, AnimatePresence, PanInfo, useInView, animate, useScroll, useTransform } from 'framer-motion'
 
 if (typeof window !== 'undefined') {
     gsap.registerPlugin(ScrollTrigger)
@@ -55,6 +55,14 @@ export default function SobrePage() {
     const [isMobile, setIsMobile] = useState(false)
     const [currentImageIndex, setCurrentImageIndex] = useState(0)
     const logoRef = useRef<HTMLDivElement>(null)
+    const raizesRef = useRef<HTMLDivElement>(null)
+
+    // Parallax scroll para a seção Nossas Raízes
+    const { scrollYProgress: raizesScrollProgress } = useScroll({
+        target: raizesRef,
+        offset: ['start end', 'end start']
+    })
+    const raizesY = useTransform(raizesScrollProgress, [0, 1], ['-15%', '15%'])
 
     const whatsappNumber = '6191627171'
     const whatsappMessage = 'Olá, gostaria de mais informações sobre a Constrictor Team.'
@@ -307,25 +315,36 @@ export default function SobrePage() {
             ═══════════════════════════════════════════════════════════════ */}
             <section className="relative bg-black overflow-hidden">
 
-                {/* ── BLOCO 1: Poster de impacto com parallax sutil ── */}
-                <div className="relative w-full min-h-[60vh] sm:min-h-[70vh] lg:min-h-[85vh] flex items-center justify-center overflow-hidden">
-                    {/* Imagem de fundo — poster "Nossas Raízes" */}
-                    <div className="absolute inset-0">
+                {/* ── BLOCO 1: Poster com efeito Parallax (scroll-driven) ── */}
+                <div
+                    ref={raizesRef}
+                    className="relative w-full min-h-[70vh] sm:min-h-[80vh] lg:min-h-[90vh] flex items-center justify-center overflow-hidden"
+                >
+                    {/* Imagem com parallax — a imagem é 140% da altura para ter espaço de translação */}
+                    <motion.div
+                        className="absolute inset-x-0 -top-[20%] h-[140%] w-full pointer-events-none transform-gpu"
+                        style={{
+                            y: raizesY,
+                            willChange: 'transform'
+                        }}
+                    >
                         <Image
                             src="/nossas-raizes.jpg"
                             alt="Nossas Raízes — Constrictor Team"
                             fill
-                            className="object-cover object-top"
+                            className="object-cover object-center"
                             sizes="100vw"
                             quality={90}
                             priority
                         />
-                    </div>
-                    {/* Overlay gradiente para legibilidade */}
-                    <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
+                    </motion.div>
 
-                    {/* Texto sobre a imagem (mobile: oculto pois a imagem já tem texto) */}
+                    {/* Overlay gradiente para contraste e transição suave para o fundo preto */}
+                    <div className="absolute inset-0 bg-black/40 pointer-events-none" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black pointer-events-none" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/30 pointer-events-none" />
+
+                    {/* Label sutil sobre a imagem */}
                     <div className="relative z-10 text-center px-4 sm:px-6 py-20">
                         <motion.div
                             initial={{ opacity: 0, y: 40 }}
